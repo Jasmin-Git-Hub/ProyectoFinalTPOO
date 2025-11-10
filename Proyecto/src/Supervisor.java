@@ -23,6 +23,7 @@
         public String toString() {
             return "Supervisor{" + "area=" + area + '}';
         }
+        // se hicieron cambios 
 
 
 

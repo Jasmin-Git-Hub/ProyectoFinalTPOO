@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -18,8 +19,14 @@ public class Controller  {
            }
        } return null;
    }
-   public void mostrarAsistenciaPorfecha(){
-       
+   public ArrayList<Asistencia>mostrarAsistenciaPorfecha(LocalDate fecha){
+       ArrayList<Asistencia>listaFiltrada=new ArrayList<>();
+       for (Asistencia a : asistencia) {
+          if (a.getFecha().equals(fecha)){
+              listaFiltrada.add(a);
+          }
+       }
+       return listaFiltrada;
    }
    public void obtenerReporte(){
        

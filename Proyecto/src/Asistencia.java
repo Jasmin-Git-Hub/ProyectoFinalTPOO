@@ -1,9 +1,10 @@
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Asistencia {
     private int id ;
-    private Date fecha;
+    private LocalDate fecha;
     private String horaEntrada;
     private String horaSalida;
     private String estado;
@@ -12,7 +13,7 @@ public class Asistencia {
     public Asistencia() {
     }
 
-    public Asistencia(int id, Date fecha, String horaEntrada, String horaSalida, String estado, Practiicante practicante) {
+    public Asistencia(int id, LocalDate fecha, String horaEntrada, String horaSalida, String estado, Practiicante practicante) {
         this.id = id;
         this.fecha = fecha;
         this.horaEntrada = horaEntrada;
@@ -29,11 +30,11 @@ public class Asistencia {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

@@ -8,7 +8,7 @@ public class Practiicante extends Persona{
     public Practiicante() {
     }
 
-    public Practiicante(int id, String nombre, String apellido, String dni,String carrera, String areaAsignada, Supervisor supervisor) {
+public Practiicante(int id, String nombre, String apellido, String dni,String carrera, String areaAsignada, Supervisor supervisor) {
         super(id, nombre, apellido, dni);
         this.carrera = carrera;
         this.areaAsignada = areaAsignada;

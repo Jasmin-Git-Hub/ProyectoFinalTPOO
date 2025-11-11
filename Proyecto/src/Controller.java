@@ -10,10 +10,13 @@ public class Controller  {
    }
    public void registrarAsistencia(Asistencia a){
        asistencia.add(a);
-       System.out.println("asistencia registrada para "+practicantes.get);
    }
-   public void buscarPracticante(){
-       
+   public Practiicante buscarPracticante(String dni){
+       for (Practiicante p : practicantes) {
+           if (p.getDni().equals(dni)) {
+               return p;
+           }
+       } return null;
    }
    public void mostrarAsistenciaPorfecha(){
        

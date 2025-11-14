@@ -1,16 +1,33 @@
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 
 public class Controller  {
     private ArrayList<Practiicante> practicantes = new ArrayList(); 
     private ArrayList<Asistencia> asistencias=new ArrayList();
+    private ArrayList<Actividad> actividad=new ArrayList();
+    private ArrayList<Profesor> profesor=new ArrayList();
+    private ArrayList<Administrador> administrador=new ArrayList();
+    private ArrayList<Secretaria> secretaria=new ArrayList();
+    private ArrayList<Practiicante> practicante=new ArrayList();
    public void agregarPracticante(Practiicante p){ 
        practicantes.add(p); 
    }
-   public void registrarAsistencia(Asistencia a){
-       asistencias.add(a);
+   public String registrarAsistencia(Practiicante p, String estado){
+       LocalDate hoy = LocalDate.now();
+       for (Asistencia a : asistencias) {
+           if (a.getPracticante().equals(p) && a.getFecha().equals(hoy)) {
+               return "Error, ya se registró una asistencia parra el practicante el día de hoy";  
+           }
+       } 
+       int idAsistencia = asistencias.size()+1;
+       String hora = LocalTime.now().toString();
+       Asistencia  nuevaAsistencia = new Asistencia(idAsistencia, hoy, hora, "", estado, p);
+       asistencias.add(nuevaAsistencia);
+       return "Asistencia registrada conrrectamente.";
+       
    }
    public Practiicante buscarPracticante(String dni){
        for (Practiicante p : practicantes) {
@@ -38,4 +55,28 @@ public class Controller  {
            }
        }
    }   
+   
+   public Persona iniciarSesion(String email, String contraseña){
+       for (Practiicante prac1 : practicantes) {
+           if (prac1.getEmail().equals(email) && prac1.getContraseña().equals(contraseña) ) {
+               return prac1;
+           }
+       } 
+       for (Administrador adm1 : administrador) {
+           if (adm1.getEmail().equals(email) && adm1.getContraseña().equals(contraseña) ) {
+               return adm1;
+           }
+       }
+       for (Secretaria sec1 : secretaria) {
+           if (sec1.getEmail().equals(email) && sec1.getContraseña().equals(contraseña) ) {
+               return sec1;
+           }
+       }
+       for (Profesor prof1 : profesor) {
+           if (prof1.getEmail().equals(email) && prof1.getContraseña().equals(contraseña) ) {
+               return prof1;
+           }
+       } 
+       return null;
+   }
 }

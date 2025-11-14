@@ -41,7 +41,7 @@ public Practiicante(int id, String nombre, String apellido, String dni,String ca
 
     @Override
     public String toString() {
-        return "Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + '}';
+        return super.toString()+"Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + '}';
     }
     
     

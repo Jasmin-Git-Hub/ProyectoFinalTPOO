@@ -50,7 +50,7 @@ public class Administrador extends Persona {
 
     @Override
     public String toString() {
-        return "Administrador{" + "email=" + email + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", cargo=" + cargo + '}';
+        return super .toString()+"Administrador{" + "email=" + email + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + ", cargo=" + cargo + '}';
     }
     
 }

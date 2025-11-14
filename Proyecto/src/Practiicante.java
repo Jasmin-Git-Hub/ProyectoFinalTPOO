@@ -1,18 +1,29 @@
 
+import java.util.ArrayList;
+
+
 public class Practiicante extends Persona{
     
     private String carrera;
     private String areaAsignada;
     private Supervisor supervisor;
+    private String email;
+    private String contraseña;
+    private boolean activo; 
+    private ArrayList<Actividad> registro; 
 
     public Practiicante() {
     }
 
-public Practiicante(int id, String nombre, String apellido, String dni,String carrera, String areaAsignada, Supervisor supervisor) {
+    public Practiicante(int id, String nombre, String apellido, String dni, String carrera, String areaAsignada, Supervisor supervisor, String email, String contraseña, boolean activo) {
         super(id, nombre, apellido, dni);
         this.carrera = carrera;
         this.areaAsignada = areaAsignada;
         this.supervisor = supervisor;
+        this.email = email;
+        this.contraseña = contraseña;
+        this.activo = true;
+        this.registro = new ArrayList<>(); 
     }
 
     public String getCarrera() {
@@ -39,10 +50,43 @@ public Practiicante(int id, String nombre, String apellido, String dni,String ca
         this.supervisor = supervisor;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public ArrayList<Actividad> getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(ArrayList<Actividad> registro) {
+        this.registro = registro;
+    }
+
     @Override
     public String toString() {
-        return super.toString()+"Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + '}';
+        return "Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + ", email=" + email + ", contraseña=" + contraseña + ", activo=" + activo + '}';
     }
+
     
     
 }

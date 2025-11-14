@@ -85,8 +85,5 @@ public class Practiicante extends Persona{
     @Override
     public String toString() {
         return "Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + ", email=" + email + ", contraseña=" + contraseña + ", activo=" + activo + '}';
-    }
-
-    
-    
+    } 
 }

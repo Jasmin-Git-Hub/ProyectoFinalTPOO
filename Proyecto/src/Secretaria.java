@@ -1,4 +1,4 @@
-
+    
 public class Secretaria extends Persona{
     private String cargo ;
     private String sueldo;

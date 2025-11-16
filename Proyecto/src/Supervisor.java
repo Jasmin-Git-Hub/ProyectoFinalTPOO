@@ -7,7 +7,7 @@
         public Supervisor() {
         }
 
-        public Supervisor( int id, String nombre, String apellido, String dni,String area, String contraseña) {
+        public Supervisor( int id, String nombre, String apellido, String dni,String area) {
             super(id, nombre, apellido, dni);
             this.area = area;
         }
@@ -22,7 +22,7 @@
         public String getContraseña (){
             return contraseña;  
         }
-        public void serContraseña(String contrseña ){
+        public void setContraseña(String contraseña ){
             this.contraseña=contraseña;
         }
         

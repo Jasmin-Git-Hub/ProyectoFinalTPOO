@@ -5,29 +5,45 @@ import java.util.ArrayList;
 public class Principal {
 
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        Supervisor s1 = new Supervisor(1, "Mateo", "Castillo", "84293402", "Salud");
-        Supervisor s2 = new Supervisor(2, "Laura", "Mercedez", "23814405", "Salud");
-        Practiicante p1 = new Practiicante(123, "Luis", "Pretell", "85342104", "Farmacia", "Salud", s1);
-        Practiicante p2 = new Practiicante(0121, "Sofia ", "Cespedes", "92852403", "Enfermería", "Salud", s2);
-        controller.agregarPracticante(p1);
-        controller.agregarPracticante(p2);
-        controller.registrarAsistencia(new Asistencia(1, LocalDate.of(2025, 11, 10),"08:00", "13:00", "Presente", p1));
-        controller.registrarAsistencia(new Asistencia(1, LocalDate.of(2025, 11, 10), "08:00", "13:30", "Tarde", p2));
-        controller.registrarAsistencia(new Asistencia(1, LocalDate.of(2025, 11, 10),"00:00", "00:00", "Falto", p1));
+        Controller controladora = new Controller();
+        Supervisor s1=new Supervisor (1,"Mateo","Castillo","84293402","Salud");
+        Profesor p1 =new Profesor(10,"Carlos","Peréz","1234567","Informatica","Carlos@gmail.com","976815321","pass123");
         
-        System.out.println("\n--- Buscar Practicante ---");
-        Practiicante buscado = controller.buscarPracticante("85342104");
-        if (buscado != null) {
-            System.out.println("Encontrado:" + buscado.getNombre() + " " + buscado.getApellido() + " (" + buscado.getCarrera() + ") " );
+       
+        Practiicante prac1=new Practiicante(123, "Luis", "Pretell", "85342104","Farmacia", "Salud", s1, "Luis@gmail.com", "Maykol123", true);
+        Practiicante prac2=new Practiicante(456, "Benjamin", "Saldaña", "60039775","Enfermero", "Salud", s1, "Benjamin@gmail.com", "Benja123@.", true);
+        Practiicante prac3=new Practiicante(789, "Anderson", "Quispe", "74916640","Farmacia", "Salud", s1, "Anderson@gmail.com", "Anderxd123", true);
+        controladora.agregarPracticante(prac1);
+        controladora.agregarPracticante(prac2);
+        controladora.agregarPracticante(prac3);
+        System.out.println("Asistencia de los practicantes:");
+        System.out.println(controladora.registrarAsistencia(prac1, "Presente"));
+        System.out.println(controladora.registrarAsistencia(prac2, "Tarde"));
+        System.out.println("Prueba de duplicados");
+        System.out.println(controladora.registrarAsistencia(prac1, "Presente"));
+        System.out.println("Marcar ausencias");
+        controladora.marcarAusencia();
+        System.out.println("Se marcaron las ausencias");
+        ArrayList<Asistencia> asistenciasHoy=controladora.mostrarAsistenciaPorfecha(LocalDate.now());
+        for (Asistencia a : asistenciasHoy) {
+            System.out.println("Practicante:"+a.getPracticante().getNombre()+"Estado" +a.getEstado());
+            
         }
-        System.out.println("\n--- Asistencias del 10/11/2025 ---");
-        ArrayList<Asistencia> lista = controller.mostrarAsistenciaPorfecha(LocalDate.of(2025, 11, 10));
-        for (Asistencia a : lista) {
-            System.out.println("DNI: " + a.getPracticante().getDni() + " | Estado: " + a.getEstado());
+        System.out.println("Prueba de supervision");
+        controladora.registrarInformacion(prac1, p1, "El practicante es activo");
+        controladora.registrarInformacion(prac1, p1, "Requiere mejorar en reportes");
+        System.out.println("Historial de"+prac1.getNombre()+":");
+        ArrayList<Actividad>historialLuis=controladora.obtenerHistorial(prac1);
+        for (Actividad h1 : historialLuis) {
+            System.out.println(" - "+h1.getFecha()+":"+h1.getDescripcion()+"(Autor:"+h1.getMaestro().getNombre()+" )");
+            
         }
-    
-        System.out.println("\n--- Reporte General de Asistencia ---");
-        controller.obtenerReporte();
+        System.out.println("Desactivar practicante");
+        System.out.println("Estado de Benjamin antes:"+controladora.buscarPracticante("60039775").isActivo());
+        controladora.desactivarPracticante("60039775");
+        System.out.println("Estado de Benjamin antes:"+controladora.buscarPracticante("60039775").isActivo());
+                
+        
+        
     }
 }

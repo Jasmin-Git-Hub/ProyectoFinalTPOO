@@ -79,4 +79,13 @@ public class Controller  {
        } 
        return null;
    }
+  
+   public void registrarInformacion(Practiicante p, Profesor encargado, String descripcion){
+       int act=actividad.size()+1;
+       LocalDate hoy =LocalDate.now();
+       Actividad act1 = new Actividad(act, hoy, descripcion, encargado);
+       actividad.add(act1);
+       
+   }
+   
 }

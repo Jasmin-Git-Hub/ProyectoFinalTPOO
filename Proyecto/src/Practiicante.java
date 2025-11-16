@@ -10,7 +10,7 @@ public class Practiicante extends Persona{
     private String email;
     private String contraseña;
     private boolean activo; 
-    private ArrayList<Actividad> registro; 
+    private ArrayList<Actividad> actividad; 
 
     public Practiicante() {
     }
@@ -23,7 +23,7 @@ public class Practiicante extends Persona{
         this.email = email;
         this.contraseña = contraseña;
         this.activo = true;
-        this.registro = new ArrayList<>(); 
+        this.actividad= new ArrayList<>(); 
     }
 
     public String getCarrera() {
@@ -75,15 +75,19 @@ public class Practiicante extends Persona{
     }
 
     public ArrayList<Actividad> getRegistro() {
-        return registro;
+        return actividad;
     }
 
     public void setRegistro(ArrayList<Actividad> registro) {
-        this.registro = registro;
+        this.actividad = registro;
     }
 
     @Override
     public String toString() {
-        return "Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + ", email=" + email + ", contraseña=" + contraseña + ", activo=" + activo + '}';
+        return "Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + ", email=" + email + ", contraseña=" + contraseña + ", activo=" + activo + "actividad"+actividad.size()+'}';
     } 
+    public void agregarActividad(Actividad act)
+    {
+       this.actividad.add(act);
+    }
 }

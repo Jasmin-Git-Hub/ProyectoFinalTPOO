@@ -85,7 +85,45 @@ public class Controller  {
        LocalDate hoy =LocalDate.now();
        Actividad act1 = new Actividad(act, hoy, descripcion, encargado);
        actividad.add(act1);
+       p.agregarActividad(act1);
        
+   }
+   
+   public ArrayList<Actividad>obtenerHistorial(Practiicante p){
+       return p.getRegistro();
+       
+   
+   }
+   
+   public boolean desactivarPracticante(String dni){
+       Practiicante p = buscarPracticante(dni);
+       if (p != null) {
+           p.setActivo(false);
+           return true;
+       } return false;
+   }
+   
+   public void marcarAusencia(){
+       LocalDate hoy = LocalDate.now();
+       for (Practiicante p1 : practicantes) {
+           if (!p1.isActivo()) {
+               continue;
+           }
+           boolean tieneAsistencia = false;
+           for (Asistencia a : asistencias) {
+               if (a.getPracticante().equals(p1) && a.getFecha().equals(hoy)){
+                   tieneAsistencia = true;
+                   break;
+               }
+           }
+           if (!tieneAsistencia) {
+               int idAsistencia = asistencias.size()+1;
+               Asistencia ausente = new Asistencia(idAsistencia, hoy, "00:00", "00:00", "Ausente", p1);
+               asistencias.add(ausente);
+           }
+       }
+       
+   
    }
    
 }

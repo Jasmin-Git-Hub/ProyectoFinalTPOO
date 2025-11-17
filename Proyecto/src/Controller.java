@@ -12,10 +12,34 @@ public class Controller  {
     private ArrayList<Administrador> administrador=new ArrayList();
     private ArrayList<Secretaria> secretaria=new ArrayList();
     private ArrayList<Practiicante> practicante=new ArrayList();
+    private ArrayList<Insidencia> incidencia=new ArrayList();
+     
+    private Persona usuarioLogeado =null;
+    public Controller(){
+        profesor.add(new Profesor(1, "carlos", " Estrado","965874365", "computación","prof@gmail.com","123"));
+        administrador.add( new Administrador("admin@gami", "958746854","admin","jefe",2, "admin","principal","954754975"));
+        secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmaill.com", "987654324", "ana123")); 
+        
+        Practiicante p1 = new Practiicante(101, "Luis", "Pretell", "584796548", "Farmacia", "Salud", "Luis@gmail.com", "pass123"); 
+        p1.setProfesorAsignado(profesor.get(0));
+        practicantes.add(p1);
+        
+        Practiicante p2=new Practiicante (102, "Sofia", "cespedes", "92852403","enfermeria", "Salud", "sofia@gamil.com", "123");
+        p2.setProfesorAsignado(profesor.get(0));
+        practicantes.add(p2);
+    }
+    
+    
    public void agregarPracticante(Practiicante p){ 
        practicantes.add(p); 
    }
-   public String registrarAsistencia(Practiicante p, String estado){
+   public String registrarAsistencia(String dniPracticante, String estado){
+       if(!(usuarioLogeado instanceof Secretaria)&&!(usuarioLogeado instanceof Administrador)){
+           return "ERROR: No tiene permisos para esta acción"; 
+       }
+       Practiicante p = buscarPracticante(dniPracticante); 
+       if(p==null) return "ERROR: Practicante no encontrado"; 
+       if (!p.isActivo()) return "Error: El practicante está inactivo"; 
        LocalDate hoy = LocalDate.now();
        for (Asistencia a : asistencias) {
            if (a.getPracticante().equals(p) && a.getFecha().equals(hoy)) {
@@ -27,7 +51,6 @@ public class Controller  {
        Asistencia  nuevaAsistencia = new Asistencia(idAsistencia, hoy, hora, "", estado, p);
        asistencias.add(nuevaAsistencia);
        return "Asistencia registrada conrrectamente.";
-       
    }
    public Practiicante buscarPracticante(String dni){
        for (Practiicante p : practicantes) {
@@ -56,30 +79,35 @@ public class Controller  {
        }
    }   
    
-   public Persona iniciarSesion(String email, String contraseña){
+   public boolean iniciarSesion(String email, String contraseña){
        for (Practiicante prac1 : practicantes) {
            if (prac1.getEmail().equals(email) && prac1.getContraseña().equals(contraseña) ) {
-               return prac1;
+               return true;
            }
        } 
        for (Administrador adm1 : administrador) {
            if (adm1.getEmail().equals(email) && adm1.getContraseña().equals(contraseña) ) {
-               return adm1;
+               return true;
            }
        }
        for (Secretaria sec1 : secretaria) {
            if (sec1.getEmail().equals(email) && sec1.getContraseña().equals(contraseña) ) {
-               return sec1;
+               return true;
            }
        }
        for (Profesor prof1 : profesor) {
            if (prof1.getEmail().equals(email) && prof1.getContraseña().equals(contraseña) ) {
-               return prof1;
+               return true;
            }
        } 
-       return null;
+       return false;
    }
-  
+   public void cerrarSesion(){
+       this.usuarioLogeado = null; 
+   }
+   public Persona getUsuarioLogueado(){
+       return this.usuarioLogeado; 
+   }
    public void registrarInformacion(Practiicante p, Profesor encargado, String descripcion){
        int act=actividad.size()+1;
        LocalDate hoy =LocalDate.now();

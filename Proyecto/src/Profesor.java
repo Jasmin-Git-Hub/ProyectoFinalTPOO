@@ -7,12 +7,11 @@ public class Profesor extends Persona{
     public Profesor() {
     }
 
-    public Profesor(int id, String nombre, String apellido, String dni, String areaAsignada, String email, String telefono, String contraseña) {
+    public Profesor(int id, String nombre, String apellido, String dni, String areaAsignada, String email, String telefono) {
         super(id, nombre, apellido, dni);
         this.areaAsignada = areaAsignada;
         this.email = email;
         this.telefono = telefono;
-        this.contraseña = contraseña;
     }
 
     public String getAreaAsignada() {

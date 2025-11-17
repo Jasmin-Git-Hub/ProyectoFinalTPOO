@@ -11,19 +11,20 @@ public class Practiicante extends Persona{
     private String contraseña;
     private boolean activo; 
     private ArrayList<Actividad> actividad; 
+    private Profesor profesorAsignado;
 
     public Practiicante() {
     }
 
-    public Practiicante(int id, String nombre, String apellido, String dni, String carrera, String areaAsignada, Supervisor supervisor, String email, String contraseña, boolean activo) {
+    public Practiicante(int id, String nombre, String apellido, String dni, String carrera, String areaAsignada, String email, String contraseña) {
         super(id, nombre, apellido, dni);
         this.carrera = carrera;
         this.areaAsignada = areaAsignada;
-        this.supervisor = supervisor;
         this.email = email;
         this.contraseña = contraseña;
-        this.activo = true;
-        this.actividad= new ArrayList<>(); 
+        this.activo = true ;
+        this.actividad = new ArrayList<>();
+        
     }
 
     public String getCarrera() {
@@ -74,20 +75,24 @@ public class Practiicante extends Persona{
         this.activo = activo;
     }
 
-    public ArrayList<Actividad> getRegistro() {
+    public ArrayList<Actividad> getActividad() {
         return actividad;
     }
 
-    public void setRegistro(ArrayList<Actividad> registro) {
-        this.actividad = registro;
+    public void setActividad(ArrayList<Actividad> actividad) {
+        this.actividad = actividad;
     }
 
-    @Override
-    public String toString() {
-        return "Practiicante{" + "carrera=" + carrera + ", areaAsignada=" + areaAsignada + ", supervisor=" + supervisor + ", email=" + email + ", contraseña=" + contraseña + ", activo=" + activo + "actividad"+actividad.size()+'}';
-    } 
-    public void agregarActividad(Actividad act)
-    {
-       this.actividad.add(act);
+    public Profesor getProfesorAsignado() {
+        return profesorAsignado;
     }
+
+    public void setProfesorAsignado(Profesor profesorAsignado) {
+        this.profesorAsignado = profesorAsignado;
+    }
+    
+     
+    
+
+    
 }

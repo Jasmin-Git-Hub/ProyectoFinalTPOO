@@ -130,12 +130,14 @@ public class Controller  {
    
    }
    
-   public boolean desactivarPracticante(String dni){
-       Practiicante p = buscarPracticante(dni);
-       if (p != null) {
-           p.setActivo(false);
-           return true;
-       } return false;
+   public String desactivarPracticante(String dni){
+       if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
+        
+        Practiicante p = buscarPracticante(dni);
+        if (p == null) return "ERROR: Practicante no encontrado.";
+        
+        p.setActivo(false);
+        return "Practicante desactivado. Su historial se mantiene.";
    }
    
    public String marcarAusencia(){
@@ -161,6 +163,18 @@ public class Controller  {
        } return "se marcaron" + ausentesMarcados + "Ausencias.";
        
    
+      
+   }
+   public String modificarPracticante(String dni, String nuevoNombre, String nuevaCarrera){
+      if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
+        
+        Practiicante p = buscarPracticante(dni);
+        if (p == null) return "ERROR: Practicante no encontrado.";
+        
+        p.setNombre(nuevoNombre);
+        p.setCarrera(nuevaCarrera);
+        return "Practicante modificado.";
+       
    }
    
 }

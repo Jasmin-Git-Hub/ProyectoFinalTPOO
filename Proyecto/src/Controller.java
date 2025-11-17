@@ -30,8 +30,13 @@ public class Controller  {
     }
     
     
-   public void agregarPracticante(Practiicante p){ 
-       practicantes.add(p); 
+   public String agregarPracticante(int id, String nombre, String ap, String dni, String carrera, String area, String email, String contraseña){ 
+       if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
+       if (buscarPracticante(dni) != null) return "ERROR: Ya existee un practicante con ese DNI.";
+       Practiicante p1 = new Practiicante(id, nombre, ap, dni, carrera, area, email, contraseña);
+       practicantes.add(p1); 
+       return "Practicante agregado.";
+       
    }
    public String registrarAsistencia(String dniPracticante, String estado){
        if(!(usuarioLogeado instanceof Secretaria)&&!(usuarioLogeado instanceof Administrador)){
@@ -51,6 +56,8 @@ public class Controller  {
        Asistencia  nuevaAsistencia = new Asistencia(idAsistencia, hoy, hora, "", estado, p);
        asistencias.add(nuevaAsistencia);
        return "Asistencia registrada conrrectamente.";
+       
+       
    }
    public Practiicante buscarPracticante(String dni){
        for (Practiicante p : practicantes) {
@@ -131,8 +138,9 @@ public class Controller  {
        } return false;
    }
    
-   public void marcarAusencia(){
+   public String marcarAusencia(){
        LocalDate hoy = LocalDate.now();
+       int ausentesMarcados = 0;
        for (Practiicante p1 : practicantes) {
            if (!p1.isActivo()) {
                continue;
@@ -148,8 +156,9 @@ public class Controller  {
                int idAsistencia = asistencias.size()+1;
                Asistencia ausente = new Asistencia(idAsistencia, hoy, "00:00", "00:00", "Ausente", p1);
                asistencias.add(ausente);
+               ausentesMarcados++;
            }
-       }
+       } return "se marcaron" + ausentesMarcados + "Ausencias.";
        
    
    }

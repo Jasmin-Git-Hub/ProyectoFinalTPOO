@@ -90,9 +90,8 @@ public class Practiicante extends Persona{
     public void setProfesorAsignado(Profesor profesorAsignado) {
         this.profesorAsignado = profesorAsignado;
     }
-    
+    public void agregarActividad(Actividad act1){
+        this.actividad.add(act1); 
+    }
      
-    
-
-    
 }

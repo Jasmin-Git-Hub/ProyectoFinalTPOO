@@ -115,19 +115,30 @@ public class Controller  {
    public Persona getUsuarioLogueado(){
        return this.usuarioLogeado; 
    }
-   public void registrarInformacion(Practiicante p, Profesor encargado, String descripcion){
-       int act=actividad.size()+1;
-       LocalDate hoy =LocalDate.now();
-       Actividad act1 = new Actividad(act, hoy, descripcion, encargado);
-       actividad.add(act1);
-       p.agregarActividad(act1);
-       
+   public String registrarActividad(String dniPracticante, String descripcion){
+       if(!(usuarioLogeado instanceof Profesor)) return "ERROR: solo los profesores pueden registrar observaciones"; 
+       Practiicante p = buscarPracticante(dniPracticante); 
+       if(p==null) return "ERROR: practicante no encontrado"; 
+       int id = actividad.size()+1; 
+       Actividad act = new Actividad(id, LocalDate.now(), descripcion, (Profesor)usuarioLogeado); 
+       actividad.add(act); 
+       p.agregarActividad(act);
+       return "Observación registrada"; 
    }
-   
-   public ArrayList<Actividad>obtenerHistorial(Practiicante p){
-       return p.getRegistro();
-       
-   
+   public String modificarActividad(int idAct, String nuevoTexto){
+       if(!(usuarioLogeado instanceof Profesor)) return "ERROR: Sin permisos"; 
+       for (Actividad act : actividad) {
+           if(act.getId()==idAct){
+               if(act.getMaestro().equals(usuarioLogeado)){
+                   act.setDescripcion(nuevoTexto);
+                   return "Observación modificada"; 
+               }
+               else{
+                   return "ERROR: No esel autor de esta actividad"; 
+               }
+           }
+       }
+       return "ERROR: Activida no encontrada"; 
    }
    
    public String desactivarPracticante(String dni){

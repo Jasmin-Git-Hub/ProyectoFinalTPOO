@@ -13,7 +13,7 @@ public class Insidencia {
     public Insidencia() {
     }
 
-    public Insidencia(int id, LocalDate fechaReporte, String mensaje, Practiicante practicante, String estado) {
+    public Insidencia(int id, LocalDate fechaReporte, String mensaje, Practiicante practicante) {
         this.id = id;
         this.fechaReporte = fechaReporte;
         this.mensaje = mensaje;

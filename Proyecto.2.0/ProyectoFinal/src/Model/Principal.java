@@ -1,6 +1,6 @@
 
 package Model;
-
+import Controller.Controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -9,15 +9,16 @@ public class Principal {
     public static void main(String[] args) {
         Controller controladora = new Controller();
         Supervisor s1=new Supervisor (1,"Mateo","Castillo","84293402","Salud");
-        Profesor p1 =new Profesor(10,"Carlos","Peréz","1234567","Informatica","Carlos@gmail.com","976815321","pass123");
-        
+        Profesor p2=new Profesor(10, "Carlos","Peréz", "1234567", "Informatica", "Carlos@gmail.com", "976815321");
        
-        Practicante prac1=new Practicante(123, "Luis", "Pretell", "85342104","Farmacia", "Salud", s1, "Luis@gmail.com", "Maykol123", true);
-        Practicante prac2=new Practicante(456, "Benjamin", "Saldaña", "60039775","Enfermero", "Salud", s1, "Benjamin@gmail.com", "Benja123@.", true);
-        Practicante prac3=new Practicante(789, "Anderson", "Quispe", "74916640","Farmacia", "Salud", s1, "Anderson@gmail.com", "Anderxd123", true);
-        controladora.agregarPracticante(prac1);
-        controladora.agregarPracticante(prac2);
-        controladora.agregarPracticante(prac3);
+        
+        Practicante prac1=new Practicante(123, "Luis", "Pretell", "85342104", "Farmacia", "Salud", "Luis@gmail.com", "Maykol123");
+        Practicante prac2=new Practicante(456, "Benjamin", "Saldaña", "60039775","Enfermero", "Salud",  "Benjamin@gmail.com", "Benja123@.");
+        Practicante prac3=new Practicante(789, "Anderson", "Quispe", "74916640","Farmacia", "Salud",  "Anderson@gmail.com", "Anderxd123");
+        
+        controladora.agregarPracticante(123, "Luis", "Pretell", "85342104", "Farmacia", "Salud", "Luis@gmail.com", "Maykol123");
+        controladora.agregarPracticante(456, "Benjamin", "Saldaña", "60039775","Enfermero", "Salud",  "Benjamin@gmail.com", "Benja123@.");
+        controladora.agregarPracticante(789, "Anderson", "Quispe", "74916640","Farmacia", "Salud",  "Anderson@gmail.com", "Anderxd123");
         System.out.println("Asistencia de los practicantes:");
         System.out.println(controladora.registrarAsistencia(prac1, "Presente"));
         System.out.println(controladora.registrarAsistencia(prac2, "Tarde"));

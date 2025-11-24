@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pauls
@@ -30,10 +32,10 @@ public class InicioDeSesion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
         lblImagen = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -52,18 +54,23 @@ public class InicioDeSesion extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Usuario:");
 
-        jTextField2.setBackground(new java.awt.Color(143, 64, 95));
+        txtUsuario.setBackground(new java.awt.Color(143, 64, 95));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña:");
 
-        jTextField1.setBackground(new java.awt.Color(143, 64, 95));
+        txtContrasena.setBackground(new java.awt.Color(143, 64, 95));
 
-        jButton1.setBackground(new java.awt.Color(143, 64, 95));
-        jButton1.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ingresar");
+        btnIngresar.setBackground(new java.awt.Color(143, 64, 95));
+        btnIngresar.setFont(new java.awt.Font("Segoe UI Variable", 1, 18)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/rebasa neira.png"))); // NOI18N
         lblImagen.setText("jLabel5");
@@ -83,12 +90,12 @@ public class InicioDeSesion extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1)
+                            .addComponent(txtUsuario)
+                            .addComponent(txtContrasena)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(145, 145, 145)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -106,13 +113,13 @@ public class InicioDeSesion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel5)
                 .addContainerGap(80, Short.MAX_VALUE))
@@ -137,6 +144,17 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+     String usuario = txtUsuario.getText();
+     String pass = new String(txtContrasena.getText());
+
+      if(usuario.equals("admin") && pass.equals("12345")){
+         JOptionPane.showMessageDialog(this, "Bienvenido");
+      } else {
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+      }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,15 +192,15 @@ public class InicioDeSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblImagen;
+    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -147,7 +147,11 @@ public class InicioDeSesion extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
      String usuario = txtUsuario.getText();
-     String pass = new String(txtContrasena.getText());
+     String pass = txtContrasena.getText();
+     if (usuario.isEmpty()||pass.isEmpty()){
+         javax.swing.JOptionPane.showMessageDialog(this, "Por favor llene todos los campos.");
+         return; 
+     }
 
       if(usuario.equals("admin") && pass.equals("12345")){
          JOptionPane.showMessageDialog(this, "Bienvenido");

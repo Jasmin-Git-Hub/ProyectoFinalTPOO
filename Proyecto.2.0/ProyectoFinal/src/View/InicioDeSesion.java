@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Controller.Controller;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,12 +11,23 @@ import javax.swing.JOptionPane;
  * @author pauls
  */
 public class InicioDeSesion extends javax.swing.JFrame {
-
+    private Controller controladora;
+    private String tipoUsuario;
+    
     /**
      * Creates new form InicioDeSesion
      */
-    public InicioDeSesion() {
+    public InicioDeSesion(Controller controladora, String tipo) {
         initComponents();
+        this.controladora= controladora;
+        this.tipoUsuario=tipo;
+        this.setLocationRelativeTo(null);
+        if (tipo.equals("PRACTICANTE")) {
+            jLabel2.setText("Login Practicantes"); // Asumiendo que jLabel2 es tu título grande
+        } else {
+            jLabel2.setText("Login Personal");
+        }
+        
     }
 
     /**

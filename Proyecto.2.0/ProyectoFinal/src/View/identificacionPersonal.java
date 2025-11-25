@@ -101,7 +101,7 @@ public class identificacionPersonal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstudianteActionPerformed
 
     private void btnAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministradorActionPerformed
-        InicioDeSesion mInicioDeSesion2=new InicioDeSesion(controladora, "PRACTICANTE");
+        InicioDeSesion mInicioDeSesion2=new InicioDeSesion(controladora, "ADMINISTRATIVO");
         mInicioDeSesion2.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAdministradorActionPerformed

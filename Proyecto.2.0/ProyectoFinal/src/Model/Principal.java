@@ -1,6 +1,6 @@
 package Model;
 
-import View.identificadorPersonal;
+import View.identificacionPersonal;
 import Controller.Controller;
 
 public class Principal {
@@ -10,7 +10,7 @@ public class Principal {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new identificadorPersonal(controladora).setVisible(true);
+                new identificacionPersonal(controladora).setVisible(true);
             }
         });
     }

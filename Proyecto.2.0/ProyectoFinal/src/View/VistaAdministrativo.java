@@ -118,7 +118,7 @@ public class VistaAdministrativo extends javax.swing.JFrame {
                  
     
             JOptionPane.showMessageDialog(this, "Bienvenido");
-            new VistaAdministrativo().setVisible(true);
+            new VistaOpcionesAdmin().setVisible(true);
             this.dispose();
             
             } else 

@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pauls
@@ -28,24 +30,29 @@ public class VistaAdministrativo extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtEmailAdmin = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        txtContraseñaAdmin = new javax.swing.JTextPane();
+        btnIngresarAdmin = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Email: ");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(txtEmailAdmin);
 
         jLabel2.setText("Contraseña: ");
 
-        jScrollPane2.setViewportView(jTextPane2);
+        jScrollPane2.setViewportView(txtContraseñaAdmin);
 
-        jButton1.setText("Ingresar");
+        btnIngresarAdmin.setText("Ingresar");
+        btnIngresarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarAdminActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +78,7 @@ public class VistaAdministrativo extends javax.swing.JFrame {
                         .addGap(146, 146, 146)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnIngresarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -86,7 +93,7 @@ public class VistaAdministrativo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(jButton1)
+                .addComponent(btnIngresarAdmin)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegresar)
                 .addContainerGap(285, Short.MAX_VALUE))
@@ -101,6 +108,25 @@ public class VistaAdministrativo extends javax.swing.JFrame {
         seleccion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnIngresarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAdminActionPerformed
+            String email=txtEmailAdmin.getText();
+            String contrasena=new String (txtContraseñaAdmin.getText());
+            
+            if (email.equals("profe@gmail.com")||email.equals("secretaria@gmail.com")
+                    || email.equals("supervisor@gmail.com")&& contrasena.equals("12345")){
+                 
+    
+            JOptionPane.showMessageDialog(this, "Bienvenido");
+            new VistaAdministrativo().setVisible(true);
+            this.dispose();
+            
+            } else 
+                    {
+                JOptionPane.showMessageDialog(this, "Datos incorrectos");
+                            }
+ // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,15 +162,16 @@ public class VistaAdministrativo extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresarAdmin;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane txtContraseñaAdmin;
+    private javax.swing.JTextPane txtEmailAdmin;
     // End of variables declaration//GEN-END:variables
 }

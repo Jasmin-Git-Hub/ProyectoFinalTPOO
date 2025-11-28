@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pauls
@@ -27,25 +29,30 @@ public class vistaPracticante extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIngresarPrac = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        txtContraseñaPrac = new javax.swing.JTextPane();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        txtEmailPrac = new javax.swing.JTextPane();
         btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Email:");
 
-        jButton1.setText("Ingresar");
+        btnIngresarPrac.setText("Ingresar");
+        btnIngresarPrac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarPracActionPerformed(evt);
+            }
+        });
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(txtContraseñaPrac);
 
         jLabel2.setText("Contraseña:");
 
-        jScrollPane2.setViewportView(jTextPane2);
+        jScrollPane2.setViewportView(txtEmailPrac);
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +79,7 @@ public class vistaPracticante extends javax.swing.JFrame {
                         .addGap(144, 144, 144)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnIngresarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(172, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -90,7 +97,7 @@ public class vistaPracticante extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton1)
+                .addComponent(btnIngresarPrac)
                 .addGap(31, 31, 31)
                 .addComponent(btnRegresar)
                 .addContainerGap(368, Short.MAX_VALUE))
@@ -110,6 +117,21 @@ public class vistaPracticante extends javax.swing.JFrame {
         seleccion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnIngresarPracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPracActionPerformed
+        String email =txtEmailPrac.getText();
+        String contrasena =new String (txtContraseñaPrac.getText());
+        if (email.equals("jasmin@gmail.com")||email.equals("anderson@gmail.com")||
+                email.equals("luis@gmail.com")|| email.equals("benja@gmail.com")&& contrasena.equals("12345"))
+            
+        {
+        JOptionPane.showConfirmDialog(this,"Bienvenido practicante");
+     }else {
+            JOptionPane.showConfirmDialog(this, "Datos incorrectos, intentelo de nuevo");
+        }
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarPracActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,13 +169,13 @@ public class vistaPracticante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIngresarPrac;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane txtContraseñaPrac;
+    private javax.swing.JTextPane txtEmailPrac;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,16 +1,19 @@
 package Model;
 
-import View.identificacionPersonal;
 import Controller.Controller;
+import View.VistaUsuario;
 
 public class Principal {
+
     public static void main(String[] args) {
-        
+
+        // Cargar el controlador
         Controller controladora = new Controller();
 
+        // Abrir la vista principal donde se elige: Administrativo o Practicante
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new identificacionPersonal(controladora).setVisible(true);
+                new VistaUsuario().setVisible(true);
             }
         });
     }

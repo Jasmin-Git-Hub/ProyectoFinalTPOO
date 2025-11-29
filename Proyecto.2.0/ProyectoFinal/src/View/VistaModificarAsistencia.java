@@ -4,6 +4,8 @@
  */
 package View;
 
+import Controller.Controller;
+
 /**
  *
  * @author pauls
@@ -13,8 +15,10 @@ public class VistaModificarAsistencia extends javax.swing.JFrame {
     /**
      * Creates new form VistaModificarAsistencia
      */
-    public VistaModificarAsistencia() {
+        Controller controladora;
+    public VistaModificarAsistencia(Controller controladora) {
         initComponents();
+        this.controladora=controladora;
     }
 
     /**
@@ -67,7 +71,7 @@ public class VistaModificarAsistencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarMenuActionPerformed
-        new VistaOpcionesAdmin().setVisible(true);
+        new VistaOpcionesAdmin(controladora).setVisible(true);
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarMenuActionPerformed

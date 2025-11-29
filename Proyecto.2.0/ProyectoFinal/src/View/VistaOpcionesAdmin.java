@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import View.VistaOpcionesAdmin;
+
+import Controller.Controller;
 
 /**
  *
@@ -13,8 +16,11 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     /**
      * Creates new form VistaOpcionesAdmin
      */
-    public VistaOpcionesAdmin() {
+    private Controller  controladora;
+    public VistaOpcionesAdmin(Controller controladora ) {
         initComponents();
+        this.controladora=controladora;
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -171,7 +177,8 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarAsistenciaActionPerformed
-              new VistaRegistrarAsistencia().setVisible(true);
+             
+        new VistaRegistrarAsistencia(controladora).setVisible(true);
               this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarAsistenciaActionPerformed

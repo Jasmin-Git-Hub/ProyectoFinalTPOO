@@ -100,27 +100,38 @@ public class Controller  {
    }   
    
    public boolean iniciarSesion(String email, String contraseña){
-       for (Practicante prac1 : practicantes) {
-           if (prac1.getEmail().equals(email) && prac1.getContraseña().equals(contraseña) ) {
-               return true;
-           }
-       } 
-       for (Administrador adm1 : administrador) {
-           if (adm1.getEmail().equals(email) && adm1.getContraseña().equals(contraseña) ) {
-               return true;
-           }
-       }
-       for (Secretaria sec1 : secretaria) {
-           if (sec1.getEmail().equals(email) && sec1.getContraseña().equals(contraseña) ) {
-               return true;
-           }
-       }
-       for (Profesor prof1 : profesor) {
-           if (prof1.getEmail().equals(email) && prof1.getContraseña().equals(contraseña) ) {
-               return true;
-           }
-       } 
-       return false;
+        for (Practicante prac1 : practicantes) {
+            if (prac1.getEmail().equals(email) && prac1.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = prac1; 
+                return true;
+            }
+        }
+
+    // 2. Buscar en Administradores
+        for (Administrador adm1 : administrador) {
+            if (adm1.getEmail().equals(email) && adm1.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = adm1; 
+                return true;
+            }
+        }
+
+        for (Secretaria sec1 : secretaria) {
+            if (sec1.getEmail().equals(email) && sec1.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = sec1; 
+                return true;
+            }
+        }
+
+        for (Profesor prof1 : profesor) {
+            if (prof1.getEmail().equals(email) && prof1.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = prof1; 
+                return true;
+            }
+        }
+
+    
+        this.usuarioLogeado = null; 
+        return false;
    }
    
    public void cerrarSesion(){

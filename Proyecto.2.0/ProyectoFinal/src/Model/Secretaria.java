@@ -17,6 +17,7 @@ public class Secretaria extends Persona{
         this.sueldo = sueldo;
         this.email = email;
         this.telefono = telefono;
+        this.contraseña = contraseña;
     }
 
     public String getCargo() {

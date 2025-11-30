@@ -4,6 +4,8 @@
  */
 package View;
 
+import Controller.Controller;
+
 /**
  *
  * @author pauls
@@ -13,8 +15,10 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     /**
      * Creates new form VistaOpcionesAdmin
      */
-    public VistaOpcionesAdmin() {
+    private Controller controladora;
+    public VistaOpcionesAdmin(Controller controladora) {
         initComponents();
+        this.controladora=controladora;
     }
 
     /**
@@ -171,87 +175,58 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarAsistenciaActionPerformed
-              new VistaRegistrarAsistencia().setVisible(true);
+              VistaRegistrarAsistencia v=new VistaRegistrarAsistencia(controladora);
+              v.setVisible(true);
               this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarAsistenciaActionPerformed
 
     private void btnModificarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAsistenciaActionPerformed
-        new VistaModificarAsistencia().setVisible(true);
-        this.dispose();
+//        new VistaModificarAsistencia().setVisible(true);
+//        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarAsistenciaActionPerformed
 
     private void btnAgregarPracticanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPracticanteActionPerformed
-        new VistaAgregarPracticante().setVisible(true);
-        this.dispose();
+//        new VistaAgregarPracticante().setVisible(true);
+//        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarPracticanteActionPerformed
 
     private void btnBuscarPracticanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPracticanteActionPerformed
-        new VistaBuscarPracticante().setVisible(true);
-        this.dispose();
+//        new VistaBuscarPracticante().setVisible(true);
+//        this.dispose();
             // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarPracticanteActionPerformed
 
     private void btnMostrarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAsistenciaActionPerformed
-        new VistaMostrarAsistencia().setVisible(true);
-        this.dispose();
+//        new VistaMostrarAsistencia().setVisible(true);
+//        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarAsistenciaActionPerformed
 
     private void btnRegistrarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActividadActionPerformed
-        new VistaRegistrarActividad().setVisible(true);
-        this.dispose();
+//        new VistaRegistrarActividad().setVisible(true);
+//        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActividadActionPerformed
 
     private void btnObtenerReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObtenerReporteActionPerformed
-        new VistaObtenerReporte().setVisible(true);
-        this.dispose();
+//        new VistaObtenerReporte().setVisible(true);
+//        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnObtenerReporteActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        new VistaAdministrativo().setVisible(true);
-        this.dispose();
+//        new VistaAdministrativo().setVisible(true);
+//        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaOpcionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaOpcionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaOpcionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaOpcionesAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaOpcionesAdmin().setVisible(true);
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarPracticante;

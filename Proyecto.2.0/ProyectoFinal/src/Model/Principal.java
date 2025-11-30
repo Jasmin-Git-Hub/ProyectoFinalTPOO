@@ -13,7 +13,7 @@ public class Principal {
         // Abrir la vista principal donde se elige: Administrativo o Practicante
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaUsuario().setVisible(true);
+                new VistaUsuario(controladora).setVisible(true);
             }
         });
     }

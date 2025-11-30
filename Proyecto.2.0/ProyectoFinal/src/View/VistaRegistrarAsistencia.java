@@ -149,19 +149,22 @@ public class VistaRegistrarAsistencia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarMenuActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-         String dni=txtDni.getText().trim();
-         String estado= cboEstado.getSelectedItem().toString();
-         if (dni.isEmpty()){
-             JOptionPane.showMessageDialog(this," ingrese DNI");
-             return;
-         }
-         
-         String resultado=controladora.registrarAsistencia(dni, estado);
-         JOptionPane.showMessageDialog(this,resultado);
-         if (resultado. toLowerCase().contains("correctamente"))
-         txtDni.setText("");
-         cboEstado.setSelectedIndex(0);
-        // TODO add your handling code here:
+        String dni = txtDni.getText().trim();
+        String estado = cboEstado.getSelectedItem().toString();
+
+        if (dni.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese DNI");
+            return;
+        }
+
+        String resultado = controladora.registrarAsistencia(dni, estado);
+
+        JOptionPane.showMessageDialog(this, resultado);
+
+        if (resultado.toLowerCase().contains("correctamente")) {
+        txtDni.setText("");
+        cboEstado.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     /**

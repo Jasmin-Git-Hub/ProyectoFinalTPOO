@@ -114,22 +114,20 @@ public class VistaAdministrativo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnIngresarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAdminActionPerformed
-            String email=txtEmailAdmin.getText();
-            String contrasena=new String (txtContraseñaAdmin.getText());
-            
-            if (email.equals("profe@gmail.com")||email.equals("secretaria@gmail.com")
-                    || email.equals("supervisor@gmail.com")&& contrasena.equals("12345")){
-                 
-    
-            JOptionPane.showMessageDialog(this, "Bienvenido");
-           VistaOpcionesAdmin v = new VistaOpcionesAdmin(controladora);
-           v.setVisible(true);
-           this.dispose();
-            } else 
-                    {
-                JOptionPane.showMessageDialog(this, "Datos incorrectos");
-                            }
- // TODO add your handling code here:
+        String email = txtEmailAdmin.getText();
+        String contrasena = txtContraseñaAdmin.getText(); 
+
+        boolean exito = controladora.iniciarSesion(email, contrasena);
+
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "Bienvenido " + controladora.getUsuarioLogueado().getNombre());
+
+            VistaOpcionesAdmin v = new VistaOpcionesAdmin(controladora);
+            v.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Credenciales incorrectas");
+        }
     }//GEN-LAST:event_btnIngresarAdminActionPerformed
 
     /**

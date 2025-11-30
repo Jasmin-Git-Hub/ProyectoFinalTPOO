@@ -33,7 +33,7 @@ public class Controller  {
         administrador.add( new Administrador("admin@gmail", "958746854","admin","jefe",2, "admin","principal","954754975"));
         secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmail.com", "987654324", "ana123")); 
         
-        Practicante p1 = new Practicante(101, "Luis", "Pretell", "584796548", "Farmacia", "Salud", "Luis@gmail.com", "pass123"); 
+        Practicante p1 = new Practicante(101, "Luis", "Pretell", "72752401", "Farmacia", "Salud", "Luis@gmail.com", "pass123"); 
         p1.setProfesorAsignado(profesor.get(0));
         practicantes.add(p1);
         
@@ -162,7 +162,7 @@ public class Controller  {
                    return "Observación modificada"; 
                }
                else{
-                   return "ERROR: No esel autor de esta actividad"; 
+                   return "ERROR: No es el autor de esta actividad"; 
                }
            }
        }
@@ -273,5 +273,21 @@ public class Controller  {
        incidencia.add(inc); 
        return "Incidencia reportada. ID: "+ id; 
    }
+   
+    public String modificarAsistencia(String dni, LocalDate fecha, String nuevoEstado) {
+        if (!(usuarioLogeado instanceof Administrador) && !(usuarioLogeado instanceof Secretaria)) {
+            return "ERROR: No tiene permisos para modificar asistencias.";
+        }
+
+        for (Asistencia a : asistencias) {
+            if (a.getPracticante().getDni().equals(dni) && a.getFecha().equals(fecha)) {
+
+                a.setEstado(nuevoEstado);
+                return "Asistencia modificada correctamente.";
+            }
+        }
+
+        return "ERROR: No se encontró asistencia para ese DNI en esa fecha.";
+    }
 }
 

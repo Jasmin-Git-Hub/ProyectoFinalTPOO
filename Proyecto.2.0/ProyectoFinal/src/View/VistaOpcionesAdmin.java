@@ -182,14 +182,16 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarAsistenciaActionPerformed
 
     private void btnModificarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAsistenciaActionPerformed
-//        new VistaModificarAsistencia().setVisible(true);
-//        this.dispose();
+        VistaModificarAsistencia m = new VistaModificarAsistencia(controladora);
+        m.setVisible(true);
+              this.dispose();        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarAsistenciaActionPerformed
 
     private void btnAgregarPracticanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPracticanteActionPerformed
-//        new VistaAgregarPracticante().setVisible(true);
-//        this.dispose();
+        VistaAgregarPracticante m = new VistaAgregarPracticante(controladora);
+        m.setVisible(true);
+              this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarPracticanteActionPerformed
 

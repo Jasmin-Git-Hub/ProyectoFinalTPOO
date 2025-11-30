@@ -17,7 +17,7 @@ public class VistaAdministrativo extends javax.swing.JFrame {
      * Creates new form VistaAdministrativo
      */
     private Controller controladora;
-    public VistaAdministrativo( Controller Controladora) {
+    public VistaAdministrativo( Controller controladora) {
         initComponents();
         this.controladora=controladora;
         setLocationRelativeTo(null);

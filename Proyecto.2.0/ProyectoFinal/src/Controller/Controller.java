@@ -30,8 +30,8 @@ public class Controller  {
     private Persona usuarioLogeado =null;
     public Controller(){
         profesor.add(new Profesor(1, "carlos", " Estrado","965874365", "computación","prof@gmail.com","123"));
-        administrador.add( new Administrador("admin@gami", "958746854","admin","jefe",2, "admin","principal","954754975"));
-        secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmaill.com", "987654324", "ana123")); 
+        administrador.add( new Administrador("admin@gmail", "958746854","admin","jefe",2, "admin","principal","954754975"));
+        secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmail.com", "987654324", "ana123")); 
         
         Practicante p1 = new Practicante(101, "Luis", "Pretell", "584796548", "Farmacia", "Salud", "Luis@gmail.com", "pass123"); 
         p1.setProfesorAsignado(profesor.get(0));

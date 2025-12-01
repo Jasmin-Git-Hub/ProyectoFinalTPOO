@@ -30,7 +30,7 @@ public class Controller  {
     private Persona usuarioLogeado =null;
     public Controller(){
         profesor.add(new Profesor(1, "Carlos", "Estrada", "965874365", "Computación", "profe@gmail.com", "987654321", "12345"));
-        administrador.add( new Administrador("admin@gmail", "958746854","admin","jefe",2, "admin","principal","954754975"));
+        administrador.add( new Administrador("admin@gmail.com", "958746854","admin","jefe",2, "admin","principal","954754975"));
         secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmail.com", "987654324", "ana123")); 
         
         Practicante p1 = new Practicante(101, "Luis", "Pretell", "72752401", "Farmacia", "Salud", "Luis@gmail.com", "pass123"); 
@@ -151,28 +151,23 @@ public class Controller  {
        }
        
        Practicante p = buscarPracticante(dniPracticante); 
-       if(p == null) return "ERROR: Practicante no encontrado"; 
-       
-       int id = actividad.size() + 1; 
-       
-       // 2. CORRECCIÓN DE AUTOR (Para evitar errores de conversión):
-       Profesor autor;
-       
-       if (usuarioLogeado instanceof Profesor) {
-           // Si quien entró es profe, lo usamos tal cual
-           autor = (Profesor) usuarioLogeado;
-       } else {
-           // Si quien entró es ADMINISTRADOR, creamos un "Profesor Genérico" 
-           // para que la clase Actividad no falle (ya que pide un objeto Profesor obligatoriamente)
-           autor = new Profesor(id, descripcion, descripcion, descripcion, descripcion, descripcion, descripcion,descripcion);
+        if(p == null) return "ERROR: Practicante no encontrado"; 
+    
+        int id = actividad.size() + 1; 
+        Profesor autor;
+    
+        if (usuarioLogeado instanceof Profesor) {
+            autor = (Profesor) usuarioLogeado;
+        } else {
+            // Corrección semántica: Ponemos datos genéricos pero coherentes
+            autor = new Profesor(0, "ADMINISTRADOR", "SISTEMA", "00000000", "Dirección", "admin@sys", "000", "000");
+        }
 
-       // 3. Crear y guardar la actividad
-       Actividad act = new Actividad(id, LocalDate.now(), descripcion, autor); 
-       actividad.add(act); 
-       p.agregarActividad(act);
-       
-       return "Actividad registrada correctamente.";}
-        return null;
+        Actividad act = new Actividad(id, LocalDate.now(), descripcion, autor); 
+        actividad.add(act); 
+        p.agregarActividad(act);
+    
+        return "Actividad registrada correctamente.";
        
    }
       

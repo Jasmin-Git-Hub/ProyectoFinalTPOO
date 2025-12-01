@@ -217,9 +217,9 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActividadActionPerformed
 
     private void btnObtenerReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObtenerReporteActionPerformed
-//        new VistaObtenerReporte().setVisible(true);
-//        this.dispose();
-        // TODO add your handling code here:
+        VistaObtenerReporte m = new VistaObtenerReporte(controladora);
+        m.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnObtenerReporteActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

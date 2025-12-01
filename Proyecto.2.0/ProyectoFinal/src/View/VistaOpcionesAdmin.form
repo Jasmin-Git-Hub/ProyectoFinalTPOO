@@ -33,7 +33,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -46,38 +46,32 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnObtenerReporte" min="-2" pref="144" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                          <Component id="btnRegresar" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" pref="197" max="-2" attributes="0"/>
-                              <Component id="btnRegistrarAsistencia" min="-2" pref="140" max="-2" attributes="0"/>
-                              <Component id="btnBuscarPracticante" min="-2" pref="140" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnModificarAsistencia" max="32767" attributes="0"/>
-                              <Component id="btnMostrarAsistencia" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnAgregarPracticante" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnRegistrarActividad" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="0" min="-2" pref="197" max="-2" attributes="0"/>
+                      <Component id="btnRegistrarAsistencia" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Component id="btnObtenerReporte" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="btnBuscarPracticante" min="-2" pref="140" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnModificarAsistencia" max="32767" attributes="0"/>
+                      <Component id="btnMostrarAsistencia" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnRegresar" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="btnRegistrarActividad" min="-2" pref="135" max="-2" attributes="0"/>
+                      <Component id="btnAgregarPracticante" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <Component id="jLabel1" min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -99,16 +93,11 @@
                       <Component id="btnRegistrarActividad" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="55" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnObtenerReporte" min="-2" pref="46" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="btnRegresar" min="-2" pref="48" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnObtenerReporte" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="btnRegresar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

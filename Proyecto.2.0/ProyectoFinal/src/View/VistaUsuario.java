@@ -36,7 +36,12 @@ public class VistaUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        btnAdministrativo.setBackground(new java.awt.Color(204, 204, 255));
+        btnAdministrativo.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        btnAdministrativo.setForeground(new java.awt.Color(255, 255, 255));
         btnAdministrativo.setText("ADMINISTRATIVO");
         btnAdministrativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +49,9 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         });
 
+        btnPracticante.setBackground(new java.awt.Color(204, 204, 255));
+        btnPracticante.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        btnPracticante.setForeground(new java.awt.Color(255, 255, 255));
         btnPracticante.setText("PRACTICANTE");
         btnPracticante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +59,7 @@ public class VistaUsuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
         jLabel1.setText("SELECCIONE SU TIPO DE USUARIO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -58,27 +67,26 @@ public class VistaUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAdministrativo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPracticante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGap(93, 93, 93)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdministrativo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
+                .addGap(74, 74, 74)
                 .addComponent(jLabel1)
-                .addGap(136, 136, 136)
-                .addComponent(btnAdministrativo)
-                .addGap(34, 34, 34)
-                .addComponent(btnPracticante)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(btnAdministrativo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(btnPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         pack();

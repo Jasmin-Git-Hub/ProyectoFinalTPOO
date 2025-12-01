@@ -312,5 +312,49 @@ public class Controller  {
 
         return "ERROR: No se encontró asistencia para ese DNI en esa fecha.";
     }
+    
+      public String generarReporteTexto() {
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("========================================\n");
+        sb.append("       REPORTE GENERAL DE ASISTENCIA    \n");
+        sb.append("========================================\n");
+        sb.append("Fecha de emisión: ").append(LocalDate.now()).append("\n");
+        sb.append("Hora de emisión:  ").append(LocalTime.now()).append("\n\n");
+        
+        sb.append("--- LISTADO DE REGISTROS ---\n");
+        
+        int presentes = 0;
+        int tardes = 0;
+        int faltas = 0;
+        
+        if (asistencias.isEmpty()) {
+            sb.append("  (No hay registros de asistencia aún)\n");
+        } else {
+            for (Asistencia a : asistencias) {
+                sb.append(String.format("• [%s] %s %s - Estado: %s\n", 
+                        a.getFecha(), 
+                        a.getPracticante().getNombre(), 
+                        a.getPracticante().getApellido(), 
+                        a.getEstado().toUpperCase()));
+
+                String estado = a.getEstado().toLowerCase();
+                if (estado.contains("presente")) presentes++;
+                else if (estado.contains("tard")) tardes++; 
+                else if (estado.contains("falto") || estado.contains("ausente")) faltas++;
+            }
+        }
+        
+        sb.append("\n----------------------------------------\n");
+        sb.append("          RESUMEN ESTADÍSTICO           \n");
+        sb.append("----------------------------------------\n");
+        sb.append("Presentes: ").append(presentes).append("\n");
+        sb.append("Tardanzas: ").append(tardes).append("\n");
+        sb.append("Faltas:    ").append(faltas).append("\n");
+        sb.append("Total Registros: ").append(asistencias.size()).append("\n");
+        
+        return sb.toString();
+}
+      
 }
 

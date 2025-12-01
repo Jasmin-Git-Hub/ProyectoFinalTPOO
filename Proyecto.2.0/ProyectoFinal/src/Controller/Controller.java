@@ -29,7 +29,7 @@ public class Controller  {
      
     private Persona usuarioLogeado =null;
     public Controller(){
-        profesor.add(new Profesor(1, "carlos", " Estrado","965874365", "computación","prof@gmail.com","123"));
+        profesor.add(new Profesor(1, "Carlos", "Estrada", "965874365", "Computación", "profe@gmail.com", "987654321", "12345"));
         administrador.add( new Administrador("admin@gmail", "958746854","admin","jefe",2, "admin","principal","954754975"));
         secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmail.com", "987654324", "ana123")); 
         
@@ -143,16 +143,39 @@ public class Controller  {
    }
    
    public String registrarActividad(String dniPracticante, String descripcion){
-       if(!(usuarioLogeado instanceof Profesor)) return "ERROR: solo los profesores pueden registrar observaciones"; 
+       
+       // 1. CORRECCIÓN DE PERMISOS:
+       // Permitimos entrar si es Profesor O SI ES Administrador
+       if(!(usuarioLogeado instanceof Profesor) && !(usuarioLogeado instanceof Administrador)) {
+           return "ERROR: No tiene permisos para registrar actividades."; 
+       }
+       
        Practicante p = buscarPracticante(dniPracticante); 
-       if(p==null) return "ERROR: practicante no encontrado"; 
-       int id = actividad.size()+1; 
-       Actividad act = new Actividad(id, LocalDate.now(), descripcion, (Profesor)usuarioLogeado); 
+       if(p == null) return "ERROR: Practicante no encontrado"; 
+       
+       int id = actividad.size() + 1; 
+       
+       // 2. CORRECCIÓN DE AUTOR (Para evitar errores de conversión):
+       Profesor autor;
+       
+       if (usuarioLogeado instanceof Profesor) {
+           // Si quien entró es profe, lo usamos tal cual
+           autor = (Profesor) usuarioLogeado;
+       } else {
+           // Si quien entró es ADMINISTRADOR, creamos un "Profesor Genérico" 
+           // para que la clase Actividad no falle (ya que pide un objeto Profesor obligatoriamente)
+           autor = new Profesor(id, descripcion, descripcion, descripcion, descripcion, descripcion, descripcion,descripcion);
+
+       // 3. Crear y guardar la actividad
+       Actividad act = new Actividad(id, LocalDate.now(), descripcion, autor); 
        actividad.add(act); 
        p.agregarActividad(act);
-       return "Actividad registrada"; 
+       
+       return "Actividad registrada correctamente.";}
+        return null;
+       
    }
-   
+      
    public String modificarActividad(int idAct, String nuevoTexto){
        if(!(usuarioLogeado instanceof Profesor)) return "ERROR: Sin permisos"; 
        for (Actividad act : actividad) {

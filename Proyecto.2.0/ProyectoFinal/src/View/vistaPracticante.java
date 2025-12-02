@@ -122,18 +122,26 @@ public class vistaPracticante extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnIngresarPracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPracActionPerformed
-        String email =txtEmailPrac.getText();
-        String contrasena =new String (txtContraseñaPrac.getText());
-        if (email.equals("jasmin@gmail.com")||email.equals("anderson@gmail.com")||
-                email.equals("luis@gmail.com")|| email.equals("benja@gmail.com")&& contrasena.equals("12345"))
-            
-        {
-        JOptionPane.showConfirmDialog(this,"Bienvenido practicante");
-     }else {
-            JOptionPane.showConfirmDialog(this, "Datos incorrectos, intentelo de nuevo");
+        String email = txtEmailPrac.getText().trim(); 
+        String contraseña = txtContraseñaPrac.getText().trim(); 
+        if(email.isEmpty()||contraseña.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Por favor llene todos los campos.");
+            return; 
         }
-        
-        // TODO add your handling code here:
+        boolean exito = controladora.iniciarSesion(email, contraseña); 
+        if(exito){
+            if (controladora.getUsuarioLogueado() instanceof Model.Practicante){
+                JOptionPane.showMessageDialog(this, "Bienvenido " + controladora.getUsuarioLogueado().getNombre());
+                VistaOpcionesPracticante menu = new VistaOpcionesPracticante(controladora); 
+                menu.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, "Este login es exclusivo para Practicantes");
+                controladora.cerrarSesion();
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos. Verifique sus datos", "Error de acceso", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnIngresarPracActionPerformed
 
     /**

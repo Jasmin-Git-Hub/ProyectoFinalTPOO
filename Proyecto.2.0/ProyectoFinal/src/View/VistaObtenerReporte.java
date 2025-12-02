@@ -21,6 +21,11 @@ public class VistaObtenerReporte extends javax.swing.JFrame {
         this.controladora=controladora;
         setLocationRelativeTo(null);
         cargarReporte();
+        // --- ESTILO ESTÁNDAR ---
+        this.setSize(900, 600); // 1. Tamaño fijo (Ancho, Alto)
+        this.setResizable(false); // 2. Bloquear para que no lo estiren y se deforme
+        this.setLocationRelativeTo(null); // 3. Centrar en la pantalla
+        this.setTitle("Sistema de Gestión de Prácticas - UPN"); // 4. Título de la ventana
         
     }
     private void cargarReporte() {
@@ -77,7 +82,7 @@ public class VistaObtenerReporte extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnRegresarMenu)
@@ -90,7 +95,7 @@ public class VistaObtenerReporte extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addComponent(btnRegresarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );

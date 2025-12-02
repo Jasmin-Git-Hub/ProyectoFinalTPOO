@@ -28,7 +28,7 @@
               <Component id="txtDNI" min="-2" pref="94" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Component id="txtFecha" min="-2" pref="87" max="-2" attributes="0"/>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="500" max="32767" attributes="0"/>
               <Component id="cmbEstado" min="-2" pref="97" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
@@ -78,7 +78,7 @@
               </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="btnModificarAsistencia" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="316" max="32767" attributes="0"/>
               <Component id="btnRegresarMenu" min="-2" pref="46" max="-2" attributes="0"/>
           </Group>
       </Group>

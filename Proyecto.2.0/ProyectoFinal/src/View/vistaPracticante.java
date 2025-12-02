@@ -20,6 +20,11 @@ public class vistaPracticante extends javax.swing.JFrame {
     public vistaPracticante(Controller controladora) {
         this.controladora=controladora;
         initComponents();
+        // --- ESTILO ESTÁNDAR ---
+        this.setSize(900, 600); // 1. Tamaño fijo (Ancho, Alto)
+        this.setResizable(false); // 2. Bloquear para que no lo estiren y se deforme
+        this.setLocationRelativeTo(null); // 3. Centrar en la pantalla
+        this.setTitle("Sistema de Gestión de Prácticas - UPN"); // 4. Título de la ventana
     }
 
     /**
@@ -89,7 +94,7 @@ public class vistaPracticante extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnIngresarPrac, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(605, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +113,7 @@ public class vistaPracticante extends javax.swing.JFrame {
                 .addComponent(btnIngresarPrac)
                 .addGap(32, 32, 32)
                 .addComponent(btnRegresar)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
 
         pack();

@@ -29,6 +29,11 @@ public class VistaRegistrarAsistencia extends javax.swing.JFrame {
         cboEstado.addItem("Presente");
         cboEstado.addItem("tardanza");
         cboEstado.addItem("Falto");
+        // --- ESTILO ESTÁNDAR ---
+        this.setSize(900, 600); // 1. Tamaño fijo (Ancho, Alto)
+        this.setResizable(false); // 2. Bloquear para que no lo estiren y se deforme
+        this.setLocationRelativeTo(null); // 3. Centrar en la pantalla
+        this.setTitle("Sistema de Gestión de Prácticas - UPN"); // 4. Título de la ventana
     }
 
     /**
@@ -85,7 +90,7 @@ public class VistaRegistrarAsistencia extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboEstado, 0, 132, Short.MAX_VALUE)))))
+                            .addComponent(cboEstado, 0, 503, Short.MAX_VALUE)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,14 +131,11 @@ public class VistaRegistrarAsistencia extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(btnRegresarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(8, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegresarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
 
         pack();

@@ -19,6 +19,11 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     public VistaOpcionesAdmin(Controller controladora) {
         initComponents();
         this.controladora=controladora;
+        // --- ESTILO ESTÁNDAR ---
+        this.setSize(900, 600); // 1. Tamaño fijo (Ancho, Alto)
+        this.setResizable(false); // 2. Bloquear para que no lo estiren y se deforme
+        this.setLocationRelativeTo(null); // 3. Centrar en la pantalla
+        this.setTitle("Sistema de Gestión de Prácticas - UPN"); // 4. Título de la ventana
     }
 
     /**
@@ -155,12 +160,12 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 44, Short.MAX_VALUE)
+                .addGap(0, 224, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

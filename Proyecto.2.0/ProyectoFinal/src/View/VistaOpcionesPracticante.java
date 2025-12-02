@@ -21,6 +21,11 @@ public class VistaOpcionesPracticante extends javax.swing.JFrame {
         this.controladora = controladora;
         setLocationRelativeTo(null);
         jLabel1.setText("Bienvenido, " + controladora.getUsuarioLogueado().getNombre());
+        // --- ESTILO ESTÁNDAR ---
+        this.setSize(900, 600); // 1. Tamaño fijo (Ancho, Alto)
+        this.setResizable(false); // 2. Bloquear para que no lo estiren y se deforme
+        this.setLocationRelativeTo(null); // 3. Centrar en la pantalla
+        this.setTitle("Sistema de Gestión de Prácticas - UPN"); // 4. Título de la ventana
     }
 
     /**
@@ -79,7 +84,7 @@ public class VistaOpcionesPracticante extends javax.swing.JFrame {
                                 .addComponent(btnHistorial)
                                 .addGap(173, 173, 173)
                                 .addComponent(btnReportar)))))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(411, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +97,7 @@ public class VistaOpcionesPracticante extends javax.swing.JFrame {
                     .addComponent(btnReportar))
                 .addGap(37, 37, 37)
                 .addComponent(btnSalir)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
 
         pack();

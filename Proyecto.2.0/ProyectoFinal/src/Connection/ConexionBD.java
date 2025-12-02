@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class ConexionBD {
     private static final String SERVIDOR = "localhost"; //UCLAB800
-    private static String BD = "BDGInstituto";
+    private static String BD = "sistema_practicas";
     
     private static final String URL = "jdbc:sqlserver://"
             +SERVIDOR+ ";databaseName="+BD+

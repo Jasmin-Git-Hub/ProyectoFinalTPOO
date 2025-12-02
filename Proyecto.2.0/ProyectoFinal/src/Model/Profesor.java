@@ -51,8 +51,7 @@ public class Profesor extends Persona{
 
     @Override
     public String toString() {
-        return "Profesor{" + "areaAsignada=" + areaAsignada + ", email=" + email + ", telefono=" + telefono + ", contrase\u00f1a=" + contraseña + '}';
+        return this.getNombre()+ " "+this.getApellido();
     }
-    
     
 }

@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
 import Controller.Controller;
-
 /**
  *
- * @author pauls
+ * @author jasmi
  */
 public class VistaOpcionesAdmin extends javax.swing.JFrame {
 
@@ -19,11 +17,6 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     public VistaOpcionesAdmin(Controller controladora) {
         initComponents();
         this.controladora=controladora;
-        // --- ESTILO ESTÁNDAR ---
-        this.setSize(900, 600); // 1. Tamaño fijo (Ancho, Alto)
-        this.setResizable(false); // 2. Bloquear para que no lo estiren y se deforme
-        this.setLocationRelativeTo(null); // 3. Centrar en la pantalla
-        this.setTitle("Sistema de Gestión de Prácticas - UPN"); // 4. Título de la ventana
     }
 
     /**
@@ -35,23 +28,18 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         btnRegistrarAsistencia = new javax.swing.JButton();
+        btnModificarAsistencia = new javax.swing.JButton();
+        btnAgregarPracticante = new javax.swing.JButton();
         btnBuscarPracticante = new javax.swing.JButton();
+        btnMostrarAsistencia = new javax.swing.JButton();
         btnRegistrarActividad = new javax.swing.JButton();
         btnObtenerReporte = new javax.swing.JButton();
-        btnMostrarAsistencia = new javax.swing.JButton();
-        btnAgregarPracticante = new javax.swing.JButton();
-        btnModificarAsistencia = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Elije la opción que deseas ingresar ");
-
-        btnRegistrarAsistencia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegistrarAsistencia.setText("Registrar Asistencia");
         btnRegistrarAsistencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,47 +47,6 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnBuscarPracticante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnBuscarPracticante.setText("Buscar Practicante ");
-        btnBuscarPracticante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarPracticanteActionPerformed(evt);
-            }
-        });
-
-        btnRegistrarActividad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnRegistrarActividad.setText("Registrar Actividad ");
-        btnRegistrarActividad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActividadActionPerformed(evt);
-            }
-        });
-
-        btnObtenerReporte.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnObtenerReporte.setText("Obtener Reporte ");
-        btnObtenerReporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObtenerReporteActionPerformed(evt);
-            }
-        });
-
-        btnMostrarAsistencia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnMostrarAsistencia.setText("Mostrar Historial");
-        btnMostrarAsistencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarAsistenciaActionPerformed(evt);
-            }
-        });
-
-        btnAgregarPracticante.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAgregarPracticante.setText("Agregar Practicante");
-        btnAgregarPracticante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarPracticanteActionPerformed(evt);
-            }
-        });
-
-        btnModificarAsistencia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnModificarAsistencia.setText("Modificar Asistencia");
         btnModificarAsistencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +54,41 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregarPracticante.setText("Agregar Practicante");
+        btnAgregarPracticante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarPracticanteActionPerformed(evt);
+            }
+        });
+
+        btnBuscarPracticante.setText("Buscar Practicante ");
+        btnBuscarPracticante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPracticanteActionPerformed(evt);
+            }
+        });
+
+        btnMostrarAsistencia.setText("Mostrar Historial");
+        btnMostrarAsistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarAsistenciaActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarActividad.setText("Registrar Actividad ");
+        btnRegistrarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActividadActionPerformed(evt);
+            }
+        });
+
+        btnObtenerReporte.setText("Obtener Reporte ");
+        btnObtenerReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObtenerReporteActionPerformed(evt);
+            }
+        });
+
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,112 +96,107 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistrarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnObtenerReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBuscarPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnModificarAsistencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMostrarAsistencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(89, 89, 89)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarPracticante))
-                .addGap(40, 40, 40))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnRegistrarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnModificarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregarPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMostrarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnObtenerReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
-        );
+        jLabel1.setText("Seleccione la opción que desee ingresar: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnObtenerReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(132, 132, 132)
+                                .addComponent(btnRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnRegistrarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscarPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnModificarAsistencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnMostrarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(123, 123, 123)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAgregarPracticante)
+                            .addComponent(btnRegistrarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(307, 307, 307))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabel1)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(btnRegistrarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnModificarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMostrarAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarPracticante, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegistrarActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnObtenerReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13))
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(233, 233, 233))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarAsistenciaActionPerformed
-              VistaRegistrarAsistencia v=new VistaRegistrarAsistencia(controladora);
-              v.setVisible(true);
-              this.dispose();
+        VistaRegistrarAsistencia v=new VistaRegistrarAsistencia(controladora);
+        v.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarAsistenciaActionPerformed
 
     private void btnModificarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAsistenciaActionPerformed
         VistaModificarAsistencia m = new VistaModificarAsistencia(controladora);
         m.setVisible(true);
-              this.dispose();        
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarAsistenciaActionPerformed
 
     private void btnAgregarPracticanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPracticanteActionPerformed
         VistaAgregarPracticante m = new VistaAgregarPracticante(controladora);
         m.setVisible(true);
-              this.dispose();
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarPracticanteActionPerformed
 
     private void btnBuscarPracticanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPracticanteActionPerformed
-       VistaBuscarPracticante m = new VistaBuscarPracticante(controladora);
+        VistaBuscarPracticante m = new VistaBuscarPracticante(controladora);
         m.setVisible(true);
-              this.dispose();
-            // TODO add your handling code here:
+        this.dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarPracticanteActionPerformed
 
     private void btnMostrarAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarAsistenciaActionPerformed
         VistaMostrarAsistencia m = new VistaMostrarAsistencia(controladora);
         m.setVisible(true);
-              this.dispose();
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarAsistenciaActionPerformed
 
     private void btnRegistrarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActividadActionPerformed
-             VistaRegistrarActividad m = new VistaRegistrarActividad(controladora);
+        VistaRegistrarActividad m = new VistaRegistrarActividad(controladora);
         m.setVisible(true);
-              this.dispose();
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarActividadActionPerformed
 
@@ -231,15 +207,11 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnObtenerReporteActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-//        new VistaAdministrativo().setVisible(true);
-//        this.dispose();
+        //        new VistaAdministrativo().setVisible(true);
+        //        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarPracticante;
@@ -251,6 +223,5 @@ public class VistaOpcionesAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarAsistencia;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

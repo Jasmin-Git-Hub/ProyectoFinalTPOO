@@ -60,10 +60,6 @@ public class Controller {
         practicantes.add(prac2);
     }
 
-    // =========================================================================
-    //                       MÉTODOS DE LÓGICA (CRUD)
-    // =========================================================================
-
     public boolean iniciarSesion(String email, String contraseña) {
         
         // --- 1. INTENTO POR BASE DE DATOS ---
@@ -158,14 +154,17 @@ public class Controller {
         }
         return false;
     }
-
-    public String agregarPracticante(int id, String nombre, String ap, String dni, String carrera, String area, String email, String contraseña) {
+// NOTA: Se agregó el parámetro 'int idProfesorAsignado' al final
+    public String agregarPracticante(int id, String nombre, String ap, String dni, String carrera, String area, String email, String contraseña, int idProfesorAsignado) {
         if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
 
         if (this.conexionBD != null) {
-            // --- SQL INSERT ---
+            // --- SQL INSERT ACTUALIZADO PARA SQL SERVER ---
             try {
-                String sql = "INSERT INTO practicante (id, nombre, apellido, dni, carrera, area_asignada, email, contrasena, activo) VALUES (?,?,?,?,?,?,?,?,1)";
+                // 1. Agregamos la columna 'id_profesor_asignado' al INSERT
+                // 2. Usamos el valor '1' para el campo BIT 'activo'
+                String sql = "INSERT INTO practicante (id, nombre, apellido, dni, carrera, area_asignada, email, contrasena, activo, id_profesor_asignado) VALUES (?,?,?,?,?,?,?,?,1,?)";
+                
                 PreparedStatement ps = conexionBD.prepareStatement(sql);
                 ps.setInt(1, id);
                 ps.setString(2, nombre);
@@ -175,15 +174,28 @@ public class Controller {
                 ps.setString(6, area);
                 ps.setString(7, email);
                 ps.setString(8, contraseña);
+                
+                // ESTA ES LA LÍNEA QUE SOLUCIONA EL NULL:
+                ps.setInt(9, idProfesorAsignado);
+                
                 ps.executeUpdate();
                 return "Practicante registrado en BD correctamente.";
             } catch (SQLException e) {
                 return "Error BD: " + e.getMessage();
             }
         } else {
-            // --- MEMORIA ---
+            // --- MEMORIA (Respaldo) ---
             if (buscarPracticante(dni) != null) return "ERROR: Ya existe.";
-            practicantes.add(new Practicante(id, nombre, ap, dni, carrera, area, email, contraseña));
+            Practicante nuevoP = new Practicante(id, nombre, ap, dni, carrera, area, email, contraseña);
+            
+            // Buscamos el profesor en la lista de memoria para asignarlo
+            for(Profesor prof : profesor) {
+                if(prof.getId() == idProfesorAsignado) {
+                    nuevoP.setProfesorAsignado(prof);
+                    break;
+                }
+            }
+            practicantes.add(nuevoP);
             return "Practicante agregado (Local).";
         }
     }
@@ -413,5 +425,30 @@ public class Controller {
              } catch (SQLException e) { return "Error BD: " + e.getMessage(); }
          }
          return "Modificado en memoria (si existiera).";
+    }
+    public ArrayList<Profesor> listarProfesores(){
+        ArrayList<Profesor> listaProfe = new ArrayList<>(); 
+        if (this.conexionBD != null) {
+            try {
+                // Solo necesitamos el ID y el nombre completo para el combo
+                String sql = "SELECT id, nombre, apellido FROM profesor";
+                PreparedStatement ps = conexionBD.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+                
+                while (rs.next()) {
+                    // Creamos un profesor "ligero" solo con los datos necesarios
+                    Profesor p = new Profesor();
+                    p.setId(rs.getInt("id"));
+                    p.setNombre(rs.getString("nombre"));
+                    p.setApellido(rs.getString("apellido"));
+                    listaProfe.add(p);
+                }
+            } catch (SQLException e) {
+                System.out.println("Error al listar profesores: " + e.getMessage());
+            }
+        }
+        // Si no hay BD, podrías devolver la lista en memoria 'profesor' como respaldo
+        if (listaProfe.isEmpty()) return this.profesor; 
+        return listaProfe;
     }
 }

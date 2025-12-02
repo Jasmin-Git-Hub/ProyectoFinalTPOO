@@ -48,7 +48,6 @@ public class VistaAdministrativo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtEmailAdmin = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,18 +66,28 @@ public class VistaAdministrativo extends javax.swing.JFrame {
 
         btnIngresarAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnIngresarAdmin.setText("Ingresar");
+        btnIngresarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarAdminActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnIngresarAdmin);
-        btnIngresarAdmin.setBounds(730, 550, 130, 32);
+        btnIngresarAdmin.setBounds(480, 460, 130, 32);
 
         btnRegresar.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRegresar);
-        btnRegresar.setBounds(20, 550, 160, 30);
+        btnRegresar.setBounds(60, 450, 160, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("ingresa tus Datos");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(90, 170, 220, 50);
+        jLabel3.setBounds(100, 150, 220, 50);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,32 +100,53 @@ public class VistaAdministrativo extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(120, 300, 200, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Administrativo.1.1.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/interfaz.jpg"))); // NOI18N
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(10, -10, 870, 610);
-
-        jLabel5.setText("jLabel5");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(180, 50, 260, 20);
+        jLabel4.setBounds(0, -10, 880, 600);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAdminActionPerformed
+        // TODO add your handling code here:
+        String email = txtEmailAdmin.getText();
+        String contrasena = txtContraseñaAdmin.getText(); 
+
+        boolean exito = controladora.iniciarSesion(email, contrasena);
+
+        if (exito) {
+            JOptionPane.showMessageDialog(this, "Bienvenido " + controladora.getUsuarioLogueado().getNombre());
+
+            VistaOpcionesAdmin v = new VistaOpcionesAdmin(controladora);
+            v.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Credenciales incorrectas");
+        }
+    }//GEN-LAST:event_btnIngresarAdminActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        VistaUsuario seleccion = new VistaUsuario(controladora); 
+        seleccion.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,7 +161,6 @@ public class VistaAdministrativo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

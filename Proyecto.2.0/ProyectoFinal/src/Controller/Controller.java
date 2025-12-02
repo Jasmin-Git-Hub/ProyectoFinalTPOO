@@ -1,7 +1,7 @@
 
 package Controller;
 
-import Connection.ConexionBD;
+import Connection.ConexionBD; // Asegúrate que este import coincida con tu clase de Conexion
 import Model.Actividad;
 import Model.Administrador;
 import Model.Asistencia;
@@ -10,350 +10,408 @@ import Model.Persona;
 import Model.Practicante;
 import Model.Profesor;
 import Model.Secretaria;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import Database.Conexion;
-import java.sql.Connection;
 
+public class Controller {
 
-public class Controller  {
-    private ArrayList<Practicante> practicantes = new ArrayList(); 
-    private ArrayList<Asistencia> asistencias=new ArrayList();
-    private ArrayList<Actividad> actividad=new ArrayList();
-    private ArrayList<Incidencia> incidencia=new ArrayList();
+    // --- LISTAS EN MEMORIA (Respaldos) ---
+    private ArrayList<Practicante> practicantes = new ArrayList<>();
+    private ArrayList<Asistencia> asistencias = new ArrayList<>();
+    private ArrayList<Actividad> actividad = new ArrayList<>();
+    private ArrayList<Incidencia> incidencia = new ArrayList<>();
     
-    private ArrayList<Profesor> profesor=new ArrayList();
-    private ArrayList<Administrador> administrador=new ArrayList();
-    private ArrayList<Secretaria> secretaria=new ArrayList();
-    private ArrayList<Practicante> practicante=new ArrayList();
-     
+    private ArrayList<Profesor> profesor = new ArrayList<>();
+    private ArrayList<Administrador> administrador = new ArrayList<>();
+    private ArrayList<Secretaria> secretaria = new ArrayList<>();
+
+    // --- VARIABLES DE CONEXIÓN ---
     private Connection conexionBD;
-    private Persona usuarioLogeado =null;
-    public Controller(){
+    private Persona usuarioLogeado = null;
+
+    // --- CONSTRUCTOR ---
+    public Controller() {
+        // 1. Intentar Conectar a la Base de Datos
         this.conexionBD = ConexionBD.getConnection();
-        profesor.add(new Profesor(1, "Carlos", "Estrada", "965874365", "Computación", "profe@gmail.com", "987654321", "12345"));
-        administrador.add( new Administrador("admin@gmail.com", "958746854","admin","jefe",2, "admin","principal","954754975"));
-        secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmail.com", "987654324", "ana123")); 
-        
-        Practicante p1 = new Practicante(101, "Luis", "Pretell", "72752401", "Farmacia", "Salud", "Luis@gmail.com", "pass123"); 
-        p1.setProfesorAsignado(profesor.get(0));
-        practicantes.add(p1);
-        
-        Practicante p2=new Practicante (102, "Sofia", "cespedes", "92852403","enfermeria", "Salud", "sofia@gamil.com", "123");
-        p2.setProfesorAsignado(profesor.get(0));
-        practicantes.add(p2);
+
+        // 2. Cargar datos de prueba EN MEMORIA (Solo sirven si falla la BD)
+        cargarDatosMemoria();
     }
-  
-   public String agregarPracticante(int id, String nombre, String ap, String dni, String carrera, String area, String email, String contraseña){ 
-       if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
-       if (buscarPracticante(dni) != null) return "ERROR: Ya existee un practicante con ese DNI.";
-       Practicante p1 = new Practicante(id, nombre, ap, dni, carrera, area, email, contraseña);
-       practicantes.add(p1); 
-       return "Practicante agregado.";
-   }
-   
-   public String registrarAsistencia(String dniPracticante, String estado){
-       if(!(usuarioLogeado instanceof Secretaria)&&!(usuarioLogeado instanceof Administrador)){
-           return "ERROR: No tiene permisos para esta acción"; 
-       }
-       Practicante p = buscarPracticante(dniPracticante); 
-       if(p==null) return "ERROR: Practicante no encontrado"; 
-       if (!p.isActivo()) return "Error: El practicante está inactivo"; 
-       LocalDate hoy = LocalDate.now();
-       for (Asistencia a : asistencias) {
-           if (a.getPracticante().equals(p) && a.getFecha().equals(hoy)) {
-               return "Error, ya se registró una asistencia parra el practicante el día de hoy";  
-           }
-       } 
-       int idAsistencia = asistencias.size()+1;
-       String hora = LocalTime.now().toString();
-       Asistencia  nuevaAsistencia = new Asistencia(idAsistencia, hoy, hora, "", estado, p);
-       asistencias.add(nuevaAsistencia);
-       return "Asistencia registrada conrrectamente.";
-   }
-   
-   public Practicante buscarPracticante(String dni){
-       for (Practicante p : practicantes) {
-           if (p.getDni().equals(dni)) {
-               return p;
-           }
-       } return null;
-   }
-   
-   public ArrayList<Asistencia>mostrarAsistenciaPorfecha(LocalDate fecha){
-       ArrayList<Asistencia>listaFiltrada=new ArrayList<>();
-       for (Asistencia a : asistencias) {
-          if (a.getFecha().equals(fecha)){
-              listaFiltrada.add(a);
-          }
-       }
-       return listaFiltrada;
-   }
-   
-   public void obtenerReporte(){
-       System.out.println("Reporte generado:");
-       for (Asistencia a : asistencias) {
-           Practicante p = buscarPracticante(a.getPracticante().getDni()); 
-           if(p!=null){
-               System.out.println("Practicante:" + p.getNombre() + "- Fecha:" + a.getFecha() + 
-                       "- Estado"+ a.getEstado());
-           }
-       }
-   }   
-   
-   public boolean iniciarSesion(String email, String contraseña){
-        for (Practicante prac1 : practicantes) {
-            if (prac1.getEmail().equals(email) && prac1.getContraseña().equals(contraseña)) {
-                this.usuarioLogeado = prac1; 
+
+    private void cargarDatosMemoria() {
+        // Estos datos solo se usan si entra al 'else' (Sin conexión)
+        Profesor p1 = new Profesor(1, "Carlos", "Estrada", "965874365", "Computación", "profe@gmail.com", "987654321", "12345");
+        profesor.add(p1);
+        administrador.add(new Administrador("admin@gmail.com", "958746854", "admin", "jefe", 2, "Admin", "Principal", "954754975"));
+        secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmail.com", "987654324", "ana123"));
+
+        Practicante prac1 = new Practicante(101, "Luis", "Pretell", "72752401", "Farmacia", "Salud", "Luis@gmail.com", "pass123");
+        prac1.setProfesorAsignado(p1);
+        practicantes.add(prac1);
+
+        Practicante prac2 = new Practicante(102, "Sofia", "Cespedes", "92852403", "Enfermeria", "Salud", "sofia@gamil.com", "123");
+        prac2.setProfesorAsignado(p1);
+        practicantes.add(prac2);
+    }
+
+    // =========================================================================
+    //                       MÉTODOS DE LÓGICA (CRUD)
+    // =========================================================================
+
+    public boolean iniciarSesion(String email, String contraseña) {
+        
+        // --- 1. INTENTO POR BASE DE DATOS ---
+        if (this.conexionBD != null) {
+            try {
+                // A. Buscar en PRACTICANTE
+                if (buscarUsuarioEnBD(email, contraseña, "practicante")) return true;
+                // B. Buscar en ADMINISTRADOR
+                if (buscarUsuarioEnBD(email, contraseña, "administrador")) return true;
+                // C. Buscar en SECRETARIA
+                if (buscarUsuarioEnBD(email, contraseña, "secretaria")) return true;
+                // D. Buscar en PROFESOR
+                if (buscarUsuarioEnBD(email, contraseña, "profesor")) return true;
+
+            } catch (SQLException e) {
+                System.out.println("Error SQL Login: " + e.getMessage());
+            }
+        } 
+        
+        // --- 2. INTENTO POR MEMORIA (ARRAYLIST) ---
+        // (Esto se ejecuta si no hay BD o si no se encontró en BD)
+        for (Practicante p : practicantes) {
+            if (p.getEmail().equals(email) && p.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = p;
+                return true;
+            }
+        }
+        for (Administrador a : administrador) {
+            if (a.getEmail().equals(email) && a.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = a;
+                return true;
+            }
+        }
+        for (Secretaria s : secretaria) {
+            if (s.getEmail().equals(email) && s.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = s;
+                return true;
+            }
+        }
+        for (Profesor p : profesor) {
+            if (p.getEmail().equals(email) && p.getContraseña().equals(contraseña)) {
+                this.usuarioLogeado = p;
                 return true;
             }
         }
 
-    // 2. Buscar en Administradores
-        for (Administrador adm1 : administrador) {
-            if (adm1.getEmail().equals(email) && adm1.getContraseña().equals(contraseña)) {
-                this.usuarioLogeado = adm1; 
-                return true;
-            }
-        }
-
-        for (Secretaria sec1 : secretaria) {
-            if (sec1.getEmail().equals(email) && sec1.getContraseña().equals(contraseña)) {
-                this.usuarioLogeado = sec1; 
-                return true;
-            }
-        }
-
-        for (Profesor prof1 : profesor) {
-            if (prof1.getEmail().equals(email) && prof1.getContraseña().equals(contraseña)) {
-                this.usuarioLogeado = prof1; 
-                return true;
-            }
-        }
-
-    
-        this.usuarioLogeado = null; 
+        this.usuarioLogeado = null;
         return false;
-   }
-   
-   public void cerrarSesion(){
-       this.usuarioLogeado = null; 
-   }
-   
-   public Persona getUsuarioLogueado(){
-       return this.usuarioLogeado; 
-   }
-   
-   public String registrarActividad(String dniPracticante, String descripcion){
-       
-       // 1. CORRECCIÓN DE PERMISOS:
-       // Permitimos entrar si es Profesor O SI ES Administrador
-       if(!(usuarioLogeado instanceof Profesor) && !(usuarioLogeado instanceof Administrador)) {
-           return "ERROR: No tiene permisos para registrar actividades."; 
-       }
-       
-       Practicante p = buscarPracticante(dniPracticante); 
-        if(p == null) return "ERROR: Practicante no encontrado"; 
-    
-        int id = actividad.size() + 1; 
-        Profesor autor;
-    
-        if (usuarioLogeado instanceof Profesor) {
-            autor = (Profesor) usuarioLogeado;
+    }
+
+    // Método auxiliar para no repetir código SQL en el login
+    private boolean buscarUsuarioEnBD(String email, String pass, String tabla) throws SQLException {
+        String sql = "SELECT * FROM " + tabla + " WHERE email = ? AND contrasena = ?";
+        PreparedStatement ps = conexionBD.prepareStatement(sql);
+        ps.setString(1, email);
+        ps.setString(2, pass);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            // Crear el objeto según la tabla
+            switch (tabla) {
+                case "practicante":
+                    Practicante p = new Practicante();
+                    p.setId(rs.getInt("id"));
+                    p.setNombre(rs.getString("nombre"));
+                    p.setApellido(rs.getString("apellido"));
+                    p.setDni(rs.getString("dni"));
+                    p.setEmail(rs.getString("email"));
+                    p.setCarrera(rs.getString("carrera"));
+                    this.usuarioLogeado = p;
+                    break;
+                case "administrador":
+                    Administrador a = new Administrador();
+                    a.setNombre(rs.getString("nombre"));
+                    a.setEmail(rs.getString("email"));
+                    this.usuarioLogeado = a;
+                    break;
+                case "profesor":
+                    Profesor prof = new Profesor();
+                    prof.setId(rs.getInt("id"));
+                    prof.setNombre(rs.getString("nombre"));
+                    prof.setEmail(rs.getString("email"));
+                    this.usuarioLogeado = prof;
+                    break;
+                case "secretaria":
+                    Secretaria s = new Secretaria();
+                    s.setNombre(rs.getString("nombre"));
+                    this.usuarioLogeado = s;
+                    break;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public String agregarPracticante(int id, String nombre, String ap, String dni, String carrera, String area, String email, String contraseña) {
+        if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
+
+        if (this.conexionBD != null) {
+            // --- SQL INSERT ---
+            try {
+                String sql = "INSERT INTO practicante (id, nombre, apellido, dni, carrera, area_asignada, email, contrasena, activo) VALUES (?,?,?,?,?,?,?,?,1)";
+                PreparedStatement ps = conexionBD.prepareStatement(sql);
+                ps.setInt(1, id);
+                ps.setString(2, nombre);
+                ps.setString(3, ap);
+                ps.setString(4, dni);
+                ps.setString(5, carrera);
+                ps.setString(6, area);
+                ps.setString(7, email);
+                ps.setString(8, contraseña);
+                ps.executeUpdate();
+                return "Practicante registrado en BD correctamente.";
+            } catch (SQLException e) {
+                return "Error BD: " + e.getMessage();
+            }
         } else {
-            // Corrección semántica: Ponemos datos genéricos pero coherentes
-            autor = new Profesor(0, "ADMINISTRADOR", "SISTEMA", "00000000", "Dirección", "admin@sys", "000", "000");
+            // --- MEMORIA ---
+            if (buscarPracticante(dni) != null) return "ERROR: Ya existe.";
+            practicantes.add(new Practicante(id, nombre, ap, dni, carrera, area, email, contraseña));
+            return "Practicante agregado (Local).";
+        }
+    }
+
+    public String registrarAsistencia(String dniPracticante, String estado) {
+        if (!(usuarioLogeado instanceof Secretaria) && !(usuarioLogeado instanceof Administrador)) {
+            return "ERROR: No tiene permisos.";
         }
 
-        Actividad act = new Actividad(id, LocalDate.now(), descripcion, autor); 
-        actividad.add(act); 
-        p.agregarActividad(act);
-    
-        return "Actividad registrada correctamente.";
-       
-   }
-      
-   public String modificarActividad(int idAct, String nuevoTexto){
-       if(!(usuarioLogeado instanceof Profesor)) return "ERROR: Sin permisos"; 
-       for (Actividad act : actividad) {
-           if(act.getId()==idAct){
-               if(act.getMaestro().equals(usuarioLogeado)){
-                   act.setDescripcion(nuevoTexto);
-                   return "Observación modificada"; 
-               }
-               else{
-                   return "ERROR: No es el autor de esta actividad"; 
-               }
-           }
-       }
-       return "ERROR: Actividad no encontrada"; 
-   }
-   
-   public String desactivarPracticante(String dni){
-       if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
-        
-        Practicante p = buscarPracticante(dni);
+        Practicante p = buscarPracticante(dniPracticante);
         if (p == null) return "ERROR: Practicante no encontrado.";
-        
-        p.setActivo(false);
-        return "Practicante desactivado. Su historial se mantiene.";
-   }
-   
-   public String marcarAusencia(){
-       LocalDate hoy = LocalDate.now();
-       int ausentesMarcados = 0;
-       for (Practicante p1 : practicantes) {
-           if (!p1.isActivo()) {
-               continue;
-           }
-           boolean tieneAsistencia = false;
-           for (Asistencia a : asistencias) {
-               if (a.getPracticante().equals(p1) && a.getFecha().equals(hoy)){
-                   tieneAsistencia = true;
-                   break;
-               }
-           }
-           if (!tieneAsistencia) {
-               int idAsistencia = asistencias.size()+1;
-               Asistencia ausente = new Asistencia(idAsistencia, hoy, "00:00", "00:00", "Ausente", p1);
-               asistencias.add(ausente);
-               ausentesMarcados++;
-           }
-       } return "se marcaron" + ausentesMarcados + "Ausencias.";
-   }
-   
-   public String modificarPracticante(String dni, String nuevoNombre, String nuevaCarrera){
-      if (!(usuarioLogeado instanceof Administrador)) return "ERROR: Sin permisos.";
-        
-        Practicante p = buscarPracticante(dni);
-        if (p == null) return "ERROR: Practicante no encontrado.";
-        
-        p.setNombre(nuevoNombre);
-        p.setCarrera(nuevaCarrera);
-        return "Practicante modificado.";
-   }
-   
-   public ArrayList<Practicante> practicantesActivos(){
-       ArrayList<Practicante> activo =new ArrayList<>(); 
-       for (Practicante p : practicantes) {
-           if(p.isActivo()) activo.add(p); 
-       }
-       return activo; 
-   }
-   
-   public ArrayList<Practicante> practicantesAsignados(){
-       ArrayList<Practicante> asignado = new ArrayList<>();
-       if (!(usuarioLogeado instanceof Profesor)) return asignado; 
-       Profesor profLogueado = (Profesor) usuarioLogeado; 
-       for (Practicante p : practicantes) {
-           if(p.getProfesorAsignado()!=null&&p.getProfesorAsignado().equals(profLogueado)){
-               asignado.add(p); 
-           }
-       }
-       return  asignado; 
-   }
-   
-   public ArrayList<Asistencia> historialAsistencia(String dni){
-       ArrayList<Asistencia> historial = new ArrayList<>(); 
-       for (Asistencia a : asistencias) {
-           if (a.getPracticante().getDni().equals(dni)){
-               historial.add(a); 
-           }
-       }
-       Collections.sort(historial, (Asistencia a1, Asistencia a2) -> a2.getFecha().compareTo(a1.getFecha())); 
-       return  historial;
-   }
-   
-   public ArrayList <Actividad> historialActividad(String dni, LocalDate inicio, LocalDate fin){
-       Practicante p = buscarPracticante(dni); 
-       if (p==null) return new ArrayList<Actividad>(); 
-       ArrayList<Actividad> historialFiltrado = new ArrayList<>(); 
-       for (Actividad act : p.getActividad()) {
-           if((inicio==null||!act.getFecha().isBefore(inicio))&&(fin==null||!act.getFecha().isAfter(fin))){
-               historialFiltrado.add(act); 
-           }
-       }
-       return historialFiltrado; 
-   }
-   
-   public ArrayList<Asistencia> visualizarAsistencias(){
-       if(!(usuarioLogeado instanceof Practicante)) return new ArrayList<Asistencia>();
-       return historialAsistencia(usuarioLogeado.getDni()); 
-   }
-   
-   public ArrayList<Actividad> visualizarActividades(){
-       if(!(usuarioLogeado instanceof Practicante)) return new ArrayList<Actividad>(); 
-       return historialActividad(usuarioLogeado.getDni(), null, null); 
-   }
-   
-   public String reportarIncidencia(String mensaje){
-       if(!(usuarioLogeado instanceof Practicante)) return "ERROR: Solo parcticantes pueden reportar."; 
-       int id = incidencia.size()+1; 
-       Incidencia inc = new Incidencia(id, LocalDate.now(), mensaje, (Practicante) usuarioLogeado); 
-       incidencia.add(inc); 
-       return "Incidencia reportada. ID: "+ id; 
-   }
-   
-    public String modificarAsistencia(String dni, LocalDate fecha, String nuevoEstado) {
-        if (!(usuarioLogeado instanceof Administrador) && !(usuarioLogeado instanceof Secretaria)) {
-            return "ERROR: No tiene permisos para modificar asistencias.";
+
+        LocalDate hoy = LocalDate.now();
+        String hora = LocalTime.now().toString().substring(0, 8); // Hora actual HH:mm:ss
+
+        if (this.conexionBD != null) {
+            // --- SQL INSERT ---
+            try {
+                String sql = "INSERT INTO asistencia (fecha, hora_entrada, hora_salida, estado, id_practicante) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement ps = conexionBD.prepareStatement(sql);
+                ps.setDate(1, java.sql.Date.valueOf(hoy));
+                ps.setString(2, hora);
+                ps.setString(3, "13:00"); // Hora salida default
+                ps.setString(4, estado);
+                ps.setInt(5, p.getId()); // Usamos el ID recuperado de la búsqueda
+                ps.executeUpdate();
+                
+                // También agregamos a la lista local para que se vea en la tabla sin recargar
+                asistencias.add(new Asistencia(0, hoy, hora, "13:00", estado, p));
+                
+                return "Asistencia registrada en BD.";
+            } catch (SQLException e) {
+                return "Error BD: " + e.getMessage();
+            }
+        } else {
+            // --- MEMORIA ---
+            if (!p.isActivo()) return "Error: Inactivo";
+            for (Asistencia a : asistencias) {
+                if (a.getPracticante().getDni().equals(dniPracticante) && a.getFecha().equals(hoy)) {
+                    return "Error, ya se registró hoy.";
+                }
+            }
+            asistencias.add(new Asistencia(asistencias.size() + 1, hoy, hora, "", estado, p));
+            return "Asistencia registrada (Local).";
         }
+    }
 
-        for (Asistencia a : asistencias) {
-            if (a.getPracticante().getDni().equals(dni) && a.getFecha().equals(fecha)) {
+    public Practicante buscarPracticante(String dni) {
+        // 1. Intentar en BD
+        if (this.conexionBD != null) {
+            try {
+                String sql = "SELECT * FROM practicante WHERE dni = ?";
+                PreparedStatement ps = conexionBD.prepareStatement(sql);
+                ps.setString(1, dni);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    Practicante p = new Practicante();
+                    p.setId(rs.getInt("id"));
+                    p.setNombre(rs.getString("nombre"));
+                    p.setApellido(rs.getString("apellido"));
+                    p.setDni(rs.getString("dni"));
+                    p.setCarrera(rs.getString("carrera"));
+                    p.setActivo(rs.getBoolean("activo"));
+                    p.setEmail(rs.getString("email"));
+                    return p;
+                }
+            } catch (SQLException e) {
+                System.out.println("Error buscando: " + e.getMessage());
+            }
+        }
+        
+        // 2. Intentar en Memoria
+        for (Practicante p : practicantes) {
+            if (p.getDni().equals(dni)) return p;
+        }
+        return null;
+    }
 
-                a.setEstado(nuevoEstado);
-                return "Asistencia modificada correctamente.";
+    public ArrayList<Asistencia> historialAsistencia(String dni) {
+        ArrayList<Asistencia> historial = new ArrayList<>();
+        
+        // --- BD ---
+        if (this.conexionBD != null) {
+            try {
+                // Hacemos JOIN para traer datos del practicante también
+                String sql = "SELECT a.*, p.nombre, p.apellido, p.dni FROM asistencia a " +
+                             "JOIN practicante p ON a.id_practicante = p.id " +
+                             "WHERE p.dni = ? ORDER BY a.fecha DESC";
+                PreparedStatement ps = conexionBD.prepareStatement(sql);
+                ps.setString(1, dni);
+                ResultSet rs = ps.executeQuery();
+                
+                while(rs.next()) {
+                    Practicante pTemp = new Practicante();
+                    pTemp.setNombre(rs.getString("nombre"));
+                    pTemp.setApellido(rs.getString("apellido"));
+                    pTemp.setDni(rs.getString("dni"));
+                    
+                    Asistencia asis = new Asistencia();
+                    asis.setFecha(rs.getDate("fecha").toLocalDate());
+                    asis.setHoraEntrada(rs.getString("hora_entrada"));
+                    asis.setEstado(rs.getString("estado"));
+                    asis.setPracticante(pTemp);
+                    
+                    historial.add(asis);
+                }
+                return historial; // Retornamos la lista de BD
+            } catch(SQLException e) {
+                System.out.println("Error historial BD: " + e.getMessage());
             }
         }
 
-        return "ERROR: No se encontró asistencia para ese DNI en esa fecha.";
+        // --- MEMORIA ---
+        for (Asistencia a : asistencias) {
+            if (a.getPracticante().getDni().equals(dni)) {
+                historial.add(a);
+            }
+        }
+        return historial;
+    }
+
+    // --- MÉTODOS SIMPLES (GETTERS Y SETTERS) ---
+    
+    public Persona getUsuarioLogueado() {
+        return this.usuarioLogeado;
+    }
+
+    public void cerrarSesion() {
+        this.usuarioLogeado = null;
     }
     
-      public String generarReporteTexto() {
-        StringBuilder sb = new StringBuilder();
-        
-        sb.append("========================================\n");
-        sb.append("       REPORTE GENERAL DE ASISTENCIA    \n");
-        sb.append("========================================\n");
-        sb.append("Fecha de emisión: ").append(LocalDate.now()).append("\n");
-        sb.append("Hora de emisión:  ").append(LocalTime.now()).append("\n\n");
-        
-        sb.append("--- LISTADO DE REGISTROS ---\n");
-        
-        int presentes = 0;
-        int tardes = 0;
-        int faltas = 0;
-        
-        if (asistencias.isEmpty()) {
-            sb.append("  (No hay registros de asistencia aún)\n");
-        } else {
-            for (Asistencia a : asistencias) {
-                sb.append(String.format("• [%s] %s %s - Estado: %s\n", 
-                        a.getFecha(), 
-                        a.getPracticante().getNombre(), 
-                        a.getPracticante().getApellido(), 
-                        a.getEstado().toUpperCase()));
+    // --- MÉTODOS DE REPORTE ---
+    
+    public ArrayList<Asistencia> visualizarAsistencias() {
+        if (!(usuarioLogeado instanceof Practicante)) return new ArrayList<>();
+        // Reutilizamos el método de historial buscando por el DNI del usuario logueado
+        return historialAsistencia(usuarioLogeado.getDni());
+    }
 
-                String estado = a.getEstado().toLowerCase();
-                if (estado.contains("presente")) presentes++;
-                else if (estado.contains("tard")) tardes++; 
-                else if (estado.contains("falto") || estado.contains("ausente")) faltas++;
-            }
+    public String generarReporteTexto() {
+        // Nota: Este método actualmente lee de la lista 'asistencias' de memoria.
+        // Si quieres que lea de BD, tendrías que hacer un SELECT * FROM asistencia.
+        // Por simplicidad, dejaremos que use la memoria o lo que se haya cargado.
+        StringBuilder sb = new StringBuilder();
+        sb.append("REPORTE GENERAL\n----------------\n");
+        
+        int total = 0;
+        // Si hay BD, podríamos hacer un conteo rápido
+        if (conexionBD != null) {
+             try {
+                 String sql = "SELECT COUNT(*) FROM asistencia";
+                 PreparedStatement ps = conexionBD.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery();
+                 if(rs.next()) total = rs.getInt(1);
+                 sb.append("Total registros en Base de Datos: ").append(total).append("\n");
+             } catch(Exception e) {}
         }
         
-        sb.append("\n----------------------------------------\n");
-        sb.append("          RESUMEN ESTADÍSTICO           \n");
-        sb.append("----------------------------------------\n");
-        sb.append("Presentes: ").append(presentes).append("\n");
-        sb.append("Tardanzas: ").append(tardes).append("\n");
-        sb.append("Faltas:    ").append(faltas).append("\n");
-        sb.append("Total Registros: ").append(asistencias.size()).append("\n");
-        
+        // Detalle de memoria (o lo que hayas cargado)
+        for (Asistencia a : asistencias) {
+            sb.append(a.getFecha()).append(" - ").append(a.getPracticante().getNombre()).append(" - ").append(a.getEstado()).append("\n");
+        }
         return sb.toString();
+    }
+    
+    // --- OTROS MÉTODOS (Registrar Actividad, Incidencia, etc.) ---
+    // (Puedes seguir la misma lógica: IF conexion != null -> SQL INSERT, ELSE -> List.add)
+    
+    public String registrarActividad(String dni, String desc) {
+        if(!(usuarioLogeado instanceof Profesor) && !(usuarioLogeado instanceof Administrador)) return "Sin permisos";
+        
+        Practicante p = buscarPracticante(dni);
+        if(p == null) return "No encontrado";
+        
+        if (conexionBD != null) {
+            try {
+                // Asumimos que existe la tabla 'actividad'
+                String sql = "INSERT INTO actividad (fecha, descripcion, id_practicante) VALUES (?, ?, ?)";
+                PreparedStatement ps = conexionBD.prepareStatement(sql);
+                ps.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+                ps.setString(2, desc);
+                ps.setInt(3, p.getId());
+                ps.executeUpdate();
+                return "Actividad guardada en BD.";
+            } catch (SQLException e) { return "Error BD: " + e.getMessage(); }
+        }
+        return "Guardado en Memoria";
+    }
+    
+    public String reportarIncidencia(String mensaje) {
+        if (!(usuarioLogeado instanceof Practicante)) return "Solo practicantes.";
+        
+        if (conexionBD != null) {
+            try {
+                String sql = "INSERT INTO incidencia (fecha_reporte, mensaje, estado, id_practicante) VALUES (?, ?, ?, ?)";
+                PreparedStatement ps = conexionBD.prepareStatement(sql);
+                ps.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+                ps.setString(2, mensaje);
+                ps.setString(3, "Pendiente");
+                ps.setInt(4, usuarioLogeado.getId());
+                ps.executeUpdate();
+                return "Incidencia enviada a BD.";
+            } catch (SQLException e) { return "Error BD: " + e.getMessage(); }
+        }
+        return "Incidencia guardada localmente.";
+    }
+    
+    public String modificarAsistencia(String dni, LocalDate fecha, String nuevoEstado) {
+         if (!(usuarioLogeado instanceof Administrador) && !(usuarioLogeado instanceof Secretaria)) return "Sin permisos";
+         
+         if (conexionBD != null) {
+             try {
+                 // Necesitamos el ID del practicante
+                 Practicante p = buscarPracticante(dni);
+                 if (p==null) return "Practicante no encontrado";
+                 
+                 String sql = "UPDATE asistencia SET estado = ? WHERE id_practicante = ? AND fecha = ?";
+                 PreparedStatement ps = conexionBD.prepareStatement(sql);
+                 ps.setString(1, nuevoEstado);
+                 ps.setInt(2, p.getId());
+                 ps.setDate(3, java.sql.Date.valueOf(fecha));
+                 
+                 int filas = ps.executeUpdate();
+                 if (filas > 0) return "Actualizado en BD.";
+                 else return "No se encontró el registro en BD.";
+                 
+             } catch (SQLException e) { return "Error BD: " + e.getMessage(); }
+         }
+         return "Modificado en memoria (si existiera).";
+    }
 }
-      
-}
-

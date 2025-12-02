@@ -56,12 +56,14 @@ public class VistaRegistrarAsistencia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Registrar  Asistencia");
 
         jLabel2.setText("ingresa DNI :");
 
         jLabel3.setText("Estado:");
 
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegistrar.setText("Registrar asistencia ");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +112,7 @@ public class VistaRegistrarAsistencia extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        btnRegresarMenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegresarMenu.setText("VOLVER AL MENU PRINCIPAL");
         btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

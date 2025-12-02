@@ -45,8 +45,10 @@ public class VistaRegistrarActividad extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Registrar Actividad");
 
+        btnRegresarMenu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnRegresarMenu.setText("VOLVER AL MENU PRICIPAL");
         btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +64,7 @@ public class VistaRegistrarActividad extends javax.swing.JFrame {
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

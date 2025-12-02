@@ -55,7 +55,7 @@
                   <Component id="btnEnviar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnVolver" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="397" max="32767" attributes="0"/>
+              <EmptySpace pref="393" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,6 +63,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Describa el problema "/>
       </Properties>
     </Component>
@@ -83,6 +86,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnEnviar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Enviar"/>
       </Properties>
       <Events>
@@ -91,6 +97,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVolver">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
       <Events>

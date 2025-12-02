@@ -49,17 +49,17 @@ public class VistaAdministrativo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel1.setText("Email: ");
 
         jScrollPane1.setViewportView(txtEmailAdmin);
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel2.setText("Contraseña: ");
 
         jScrollPane2.setViewportView(txtContraseñaAdmin);
 
-        btnIngresarAdmin.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        btnIngresarAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnIngresarAdmin.setText("Ingresar");
         btnIngresarAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +75,7 @@ public class VistaAdministrativo extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("ingresa tus Datos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -116,7 +116,7 @@ public class VistaAdministrativo extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnIngresarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(btnRegresar)
                 .addGap(32, 32, 32))
         );

@@ -55,7 +55,7 @@ public class VistaModificarAsistencia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Modificar Asistencia");
 
         btnRegresarMenu.setText("Regreasar al Menu Principal");
@@ -65,13 +65,13 @@ public class VistaModificarAsistencia extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("DNI:");
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Fecha:");
 
-        btnModificarAsistencia.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnModificarAsistencia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnModificarAsistencia.setText("Modificar");
         btnModificarAsistencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +79,7 @@ public class VistaModificarAsistencia extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Estado:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

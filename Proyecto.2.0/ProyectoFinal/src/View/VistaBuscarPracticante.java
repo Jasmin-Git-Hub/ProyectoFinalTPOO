@@ -59,8 +59,7 @@ public class VistaBuscarPracticante extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel1.setText("Buscar Practicante");
 
-        btnRegresarMenu.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        btnRegresarMenu.setForeground(new java.awt.Color(255, 0, 0));
+        btnRegresarMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegresarMenu.setText("Volver al Menu Principal ");
         btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,11 +67,10 @@ public class VistaBuscarPracticante extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Ingrese Dni:");
 
-        btnBuscar.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 0, 0));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,24 +78,19 @@ public class VistaBuscarPracticante extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nombre");
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Carrera");
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Email");
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Apellido");
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Estado");
 
         txtNombre.setEditable(false);

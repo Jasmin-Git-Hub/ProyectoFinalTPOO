@@ -52,8 +52,7 @@ public class VistaObtenerReporte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Bodoni MT Black", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("REPORTE");
 
         btnRegresarMenu.setFont(new java.awt.Font("Bodoni MT Black", 0, 12)); // NOI18N

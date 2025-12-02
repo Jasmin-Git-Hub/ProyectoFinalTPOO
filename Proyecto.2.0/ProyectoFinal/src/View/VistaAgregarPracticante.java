@@ -59,10 +59,10 @@ public class VistaAgregarPracticante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Agregar Practicante");
 
-        btnRegresarMenu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnRegresarMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegresarMenu.setText("Volver al Menu Principal");
         btnRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,36 +70,28 @@ public class VistaAgregarPracticante extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Contraseña");
 
-        jLabel3.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("DNI:");
 
-        jLabel5.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Carrera:");
 
-        jLabel6.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("ID:");
 
-        jLabel7.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Email:");
 
-        jLabel8.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Apellido:");
 
-        jLabel9.setFont(new java.awt.Font("Bodoni MT Black", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Área:");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +100,7 @@ public class VistaAgregarPracticante extends javax.swing.JFrame {
             }
         });
 
-        btnGuardarPracticante.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        btnGuardarPracticante.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGuardarPracticante.setText("Guardar cambios");
         btnGuardarPracticante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

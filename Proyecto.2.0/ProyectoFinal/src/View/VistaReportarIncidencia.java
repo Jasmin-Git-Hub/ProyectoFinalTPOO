@@ -38,12 +38,14 @@ public class VistaReportarIncidencia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Describa el problema ");
 
         txtMensaje.setColumns(20);
         txtMensaje.setRows(5);
         jScrollPane1.setViewportView(txtMensaje);
 
+        btnEnviar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnEnviar.setText("Enviar");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +53,7 @@ public class VistaReportarIncidencia extends javax.swing.JFrame {
             }
         });
 
+        btnVolver.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +90,7 @@ public class VistaReportarIncidencia extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar)
                     .addComponent(btnVolver))
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
 
         pack();

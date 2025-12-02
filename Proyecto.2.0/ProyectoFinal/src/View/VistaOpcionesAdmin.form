@@ -24,17 +24,18 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="237" max="32767" attributes="0"/>
+              <EmptySpace pref="232" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="224" max="32767" attributes="0"/>
+              <EmptySpace pref="218" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,14 +48,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" alignment="0" min="-2" pref="197" max="-2" attributes="0"/>
                       <Component id="btnRegistrarAsistencia" min="-2" pref="140" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Component id="btnObtenerReporte" min="-2" pref="144" max="-2" attributes="0"/>
                           <Component id="btnBuscarPracticante" min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace pref="10" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnModificarAsistencia" max="32767" attributes="0"/>
                       <Component id="btnMostrarAsistencia" max="32767" attributes="0"/>
@@ -72,14 +73,14 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jLabel1" min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="33" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="btnRegistrarAsistencia" min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnModificarAsistencia" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                               <Component id="btnAgregarPracticante" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
@@ -105,11 +106,17 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Elije la opci&#xf3;n que deseas ingresar "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnRegistrarAsistencia">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Registrar Asistencia"/>
           </Properties>
           <Events>
@@ -118,6 +125,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscarPracticante">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Buscar Practicante "/>
           </Properties>
           <Events>
@@ -126,6 +136,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRegistrarActividad">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Registrar Actividad "/>
           </Properties>
           <Events>
@@ -134,6 +147,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnObtenerReporte">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Obtener Reporte "/>
           </Properties>
           <Events>
@@ -142,6 +158,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnMostrarAsistencia">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Mostrar Historial"/>
           </Properties>
           <Events>
@@ -150,6 +169,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAgregarPracticante">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Agregar Practicante"/>
           </Properties>
           <Events>
@@ -158,6 +180,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnModificarAsistencia">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Modificar Asistencia"/>
           </Properties>
           <Events>
@@ -166,6 +191,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnRegresar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Regresar"/>
           </Properties>
           <Events>

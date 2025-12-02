@@ -41,7 +41,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="411" max="32767" attributes="0"/>
+              <EmptySpace pref="403" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,6 +65,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnHistorial">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Historial"/>
       </Properties>
       <Events>
@@ -73,6 +76,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnReportar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Reportar incidencia"/>
       </Properties>
       <Events>
@@ -81,6 +87,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnSalir">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
       <Events>

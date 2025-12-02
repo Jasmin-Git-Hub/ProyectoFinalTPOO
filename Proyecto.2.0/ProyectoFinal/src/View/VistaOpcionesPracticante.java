@@ -44,6 +44,7 @@ public class VistaOpcionesPracticante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnHistorial.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnHistorial.setText("Historial");
         btnHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +52,7 @@ public class VistaOpcionesPracticante extends javax.swing.JFrame {
             }
         });
 
+        btnReportar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReportar.setText("Reportar incidencia");
         btnReportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +60,7 @@ public class VistaOpcionesPracticante extends javax.swing.JFrame {
             }
         });
 
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +87,7 @@ public class VistaOpcionesPracticante extends javax.swing.JFrame {
                                 .addComponent(btnHistorial)
                                 .addGap(173, 173, 173)
                                 .addComponent(btnReportar)))))
-                .addContainerGap(411, Short.MAX_VALUE))
+                .addContainerGap(403, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

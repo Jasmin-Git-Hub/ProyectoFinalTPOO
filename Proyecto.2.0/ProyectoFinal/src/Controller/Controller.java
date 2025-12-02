@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Connection.ConexionBD;
 import Model.Actividad;
 import Model.Administrador;
 import Model.Asistencia;
@@ -13,7 +14,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
-
+import Database.Conexion;
+import java.sql.Connection;
 
 
 public class Controller  {
@@ -27,8 +29,10 @@ public class Controller  {
     private ArrayList<Secretaria> secretaria=new ArrayList();
     private ArrayList<Practicante> practicante=new ArrayList();
      
+    private Connection conexionBD;
     private Persona usuarioLogeado =null;
     public Controller(){
+        this.conexionBD = ConexionBD.getConnection();
         profesor.add(new Profesor(1, "Carlos", "Estrada", "965874365", "Computación", "profe@gmail.com", "987654321", "12345"));
         administrador.add( new Administrador("admin@gmail.com", "958746854","admin","jefe",2, "admin","principal","954754975"));
         secretaria.add(new Secretaria(3, "Ana", "Martinez", "87872476", "Recepción", "1250", "ana@gmail.com", "987654324", "ana123")); 
